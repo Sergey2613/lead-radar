@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090c12">
+  <meta name="description" content="Получите подборку B2B-компаний с поводами для контакта: для поставщиков оборудования, промышленного опта, сертификации, аудита и консалтинга.">
+  <title>Поиск B2B-клиентов для опта, услуг и консалтинга</title>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Поиск B2B-клиентов для опта, услуг и консалтинга">
+  <meta property="og:description" content="Подборка компаний с поводами для контакта: оборудование, промышленный опт, сертификация, аудит и консалтинг.">
+  <meta property="og:image" content="/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Подбор B2B-компаний для продаж и консалтинга",
+    "serviceType": "Исследование рынка и поиск потенциальных B2B-клиентов",
+    "description": "Подборка компаний с открытыми деловыми сигналами и поводами для контакта для поставщиков оборудования, сертификации, аудита, промышленного опта и консалтинга.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Signal AI"
+    },
+    "areaServed": "RU",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB",
+      "description": "Бесплатный обзор рынка с подборкой потенциальных B2B-клиентов"
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090c12;
+      --panel: #10151e;
+      --panel-2: #141b26;
+      --line: rgba(194, 209, 231, .11);
+      --text: #f3f6fb;
+      --muted: #9aa7b9;
+      --accent: #a6f36b;
+      --accent-dark: #0b1607;
+      --blue: #8bb8ff;
+      --radius: 22px;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 16px/1.6 "DM Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .site-header { min-height: 76px; border-bottom: 1px solid rgba(194,209,231,.07); }
+    .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font: 800 16px "Manrope", sans-serif; letter-spacing: -.04em; }
+    .brand-mark { display: grid; width: 33px; height: 33px; place-items: center; border-radius: 11px; color: #0b1207; background: var(--accent); }
+    .brand-mark svg { width: 19px; height: 19px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; color: var(--muted); font-size: 13px; }
+    .nav-links > a:not(.nav-cta) { display: inline-flex; min-height: 40px; align-items: center; padding: 0 12px; border-radius: 8px; transition: color .2s, background .2s, box-shadow .2s; }
+    .nav-links > a:not(.nav-cta):hover, .nav-links > a:not(.nav-cta):focus-visible { color: var(--text); background: rgba(255,255,255,.04); box-shadow: inset 0 -2px 0 rgba(166,243,107,.65); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; padding: 10px 14px; border: 1px solid rgba(166,243,107,.3); border-radius: 10px; color: var(--text); font-size: 13px; white-space: nowrap; transition: border-color .2s, background .2s, box-shadow .2s; }
+    .nav-cta:hover, .nav-cta:focus-visible { border-color: var(--accent); background: rgba(166,243,107,.07); box-shadow: 0 0 18px rgba(166,243,107,.18); }
+    .hero { position: relative; overflow: hidden; padding: 60px 0; }
+    .hero::before { position: absolute; z-index: -1; top: -360px; left: 50%; width: 960px; height: 760px; content: ""; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(93,138,70,.17), transparent 68%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 34px; }
+    .hero-heading { max-width: 980px; margin: 0 auto; text-align: center; }
+    .hero-heading h1 { max-width: 940px; margin: 0 auto; font-size: clamp(38px, 4.6vw, 58px); }
+    .hero-content { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: 54px; }
+    .hero-offer { display: grid; align-content: center; gap: 16px; }
+    .hero-copy { max-width: 560px; margin: 0; color: #aeb9c8; font-size: 16px; line-height: 1.65; }
+    .hero-heading h1 { margin-top: 0; }
+    .hero-hook { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding: 10px 14px; border-left: 2px solid var(--accent); border-radius: 0 10px 10px 0; color: #c5cfdb; background: linear-gradient(90deg, rgba(166,243,107,.08), transparent); font-size: 12px; line-height: 1.6; }
+    .hero-hook strong { color: #e8f4de; font-weight: 600; }
+    .hero-actions { display: flex; align-items: center; gap: 17px; }
+    .action-note { color: #778497; font-size: 12px; }
+    .hero-proof { display: flex; align-items: center; gap: 13px; color: var(--muted); font-size: 12px; }
+    .avatar-stack { display: flex; padding-left: 2px; }
+    .avatar { display: grid; width: 27px; height: 27px; margin-left: -3px; place-items: center; border: 2px solid var(--bg); border-radius: 50%; color: #d9e8cc; background: #35433a; font-size: 9px; font-weight: 700; }
+    .avatar:nth-child(2) { background: #37455a; color: #d4e3ff; }
+    .avatar:nth-child(3) { background: #56433d; color: #ffe0d3; }
+    .proof-strong { color: #e3e9f1; font-weight: 600; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 650px; margin: 16px 0 16px; font: 700 clamp(42px, 5.2vw, 66px)/1.08 "Manrope", sans-serif; letter-spacing: -.065em; }
+    h1 span { color: var(--accent); }
+    .hero-offer .urgency-badge { max-width: none; margin: 0; }
+    .urgency-badge { display: flex; align-items: flex-start; gap: 10px; max-width: 520px; margin: 0 0 24px; padding: 13px 15px; border: 1px solid rgba(255,177,104,.28); border-radius: 13px; color: #f4d7bf; background: linear-gradient(110deg, rgba(255,145,77,.09), rgba(255,255,255,.025)); box-shadow: 0 10px 30px rgba(0,0,0,.14); font-size: 12px; line-height: 1.55; }
+    .urgency-badge-icon { flex: 0 0 auto; font-size: 16px; line-height: 1.3; }
+    .urgency-badge strong { color: #ffe2c9; font-weight: 700; }
+    .countdown { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; color: #aeb9c8; font-size: 10px; }
+    .countdown-unit { padding: 2px 6px; border: 1px solid rgba(255,177,104,.17); border-radius: 5px; background: rgba(0,0,0,.15); font-variant-numeric: tabular-nums; }
+    .button { display: inline-flex; min-height: 51px; align-items: center; justify-content: center; gap: 10px; padding: 0 21px; border: 0; border-radius: 12px; color: var(--accent-dark); background: var(--accent); font-weight: 700; font-size: 14px; box-shadow: 0 8px 30px rgba(166,243,107,.12); transition: transform .2s, box-shadow .2s; cursor: pointer; }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(166,243,107,.2); }
+    .button svg { width: 16px; height: 16px; }
+    .hero-visual { position: relative; }
+    .dashboard { overflow: hidden; border: 1px solid rgba(194,209,231,.14); border-radius: 19px; background: linear-gradient(145deg, #151d28, #0e131b); box-shadow: 0 30px 100px rgba(0,0,0,.42); transform: perspective(1000px) rotateY(-5deg) rotateX(2deg); }
+    .dash-top { display: flex; align-items: center; justify-content: space-between; padding: 17px 19px; border-bottom: 1px solid var(--line); }
+    .dash-title { color: #e1e8f1; font-size: 12px; font-weight: 700; }
+    .dash-controls { display: flex; gap: 5px; }
+    .dash-controls i { width: 6px; height: 6px; border-radius: 50%; background: #495568; }
+    .dash-body { padding: 20px; }
+    .dash-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .metric { padding: 12px; border: 1px solid rgba(194,209,231,.09); border-radius: 11px; background: rgba(255,255,255,.018); }
+    .metric-label { color: #7f8da0; font-size: 9px; }
+    .metric-value { margin-top: 5px; color: #f1f5fa; font: 700 21px "Manrope", sans-serif; letter-spacing: -.04em; }
+    .metric-change { margin-left: 3px; color: var(--accent); font-size: 9px; font-weight: 600; }
+    .chart-area { position: relative; height: 148px; margin-top: 16px; overflow: hidden; border: 1px solid rgba(194,209,231,.08); border-radius: 11px; background: repeating-linear-gradient(to bottom, transparent 0, transparent 35px, rgba(194,209,231,.07) 36px); }
+    .chart-label { position: absolute; top: 12px; left: 13px; color: #8290a2; font-size: 9px; }
+    .chart-svg { position: absolute; right: 0; bottom: 13px; left: 0; width: 100%; height: 92px; overflow: visible; }
+    .lead-list { display: grid; gap: 8px; margin-top: 15px; }
+    .lead-row { display: grid; grid-template-columns: 1.2fr 1fr .65fr; align-items: center; gap: 8px; padding: 9px 10px; border: 1px solid rgba(194,209,231,.075); border-radius: 9px; background: rgba(255,255,255,.018); }
+    .lead-company { color: #d9e1ec; font-size: 9px; font-weight: 600; }
+    .lead-trigger { color: #8996a8; font-size: 8px; }
+    .lead-score { justify-self: end; padding: 3px 6px; border-radius: 5px; color: #c8f5a8; background: rgba(166,243,107,.1); font-size: 8px; font-weight: 700; }
+    .float-card { position: absolute; right: -22px; bottom: 34px; display: flex; align-items: center; gap: 11px; padding: 13px 16px; border: 1px solid rgba(194,209,231,.13); border-radius: 13px; background: #151e29; box-shadow: 0 16px 34px rgba(0,0,0,.35); }
+    .float-icon { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 9px; color: var(--accent); background: rgba(166,243,107,.12); }
+    .float-icon svg { width: 15px; height: 15px; }
+    .float-text strong { display: block; color: #e8eef6; font-size: 10px; }
+    .float-text span { color: #8794a6; font-size: 9px; }
+    .section { padding: 60px 0; }
+    .section-divider { border-top: 1px solid rgba(194,209,231,.07); }
+    .section-heading { max-width: 660px; margin: 0 auto 32px; text-align: center; }
+    .section-kicker { margin-bottom: 9px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin-bottom: 10px; font: 700 clamp(30px, 4vw, 43px)/1.17 "Manrope", sans-serif; letter-spacing: -.05em; }
+    .section-subtitle { margin: 0; color: var(--muted); font-size: 15px; }
+    .faq { padding: 60px 0; }
+    .faq-list { display: grid; max-width: 850px; gap: 12px; margin: 0 auto; }
+    .faq-item { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, rgba(20,27,38,.85), rgba(14,19,27,.75)); }
+    .faq-question { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 22px; border: 0; color: var(--text); background: transparent; text-align: left; font: 700 14px/1.5 "Manrope", sans-serif; cursor: pointer; }
+    .faq-question:hover { color: var(--accent); }
+    .faq-icon { flex: 0 0 24px; display: grid; width: 24px; height: 24px; place-items: center; border: 1px solid rgba(166,243,107,.24); border-radius: 8px; color: var(--accent); transition: transform .2s; }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer { padding: 0 22px 20px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .faq-answer p { max-width: 740px; margin: 0; }
+    .faq-answer[hidden] { display: none; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step-card { position: relative; min-height: 210px; padding: 25px 24px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(145deg, rgba(20,27,38,.85), rgba(14,19,27,.75)); }
+    .step-number { display: grid; width: 33px; height: 33px; margin-bottom: 18px; place-items: center; border: 1px solid rgba(166,243,107,.24); border-radius: 10px; color: var(--accent); background: rgba(166,243,107,.06); font-size: 12px; font-weight: 700; }
+    .step-card h3 { margin-bottom: 8px; font: 700 17px "Manrope", sans-serif; letter-spacing: -.025em; }
+    .step-card p { max-width: 290px; margin-bottom: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .showcase { padding: 60px 0; }
+    .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .showcase-card { min-height: 282px; padding: 23px; border: 1px solid var(--line); border-radius: 17px; background: var(--panel); }
+    .showcase-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
+    .showcase-head h3 { margin-bottom: 5px; font: 700 15px "Manrope", sans-serif; }
+    .showcase-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .mini-tag { padding: 5px 8px; border: 1px solid var(--line); border-radius: 7px; color: #9ba9ba; font-size: 9px; white-space: nowrap; }
+    .table-preview { margin-top: 17px; overflow: hidden; border: 1px solid rgba(194,209,231,.09); border-radius: 10px; }
+    .table-header, .table-row { display: grid; grid-template-columns: 1.1fr 1fr .65fr; align-items: center; gap: 8px; padding: 10px 12px; }
+    .table-header { color: #7b899c; background: rgba(255,255,255,.025); font-size: 8px; text-transform: uppercase; letter-spacing: .06em; }
+    .table-row { border-top: 1px solid rgba(194,209,231,.06); color: #b9c4d2; font-size: 9px; }
+    .table-row strong { color: #e2e9f2; font-weight: 600; }
+    .status { justify-self: start; padding: 3px 6px; border-radius: 5px; color: #c8f5a8; background: rgba(166,243,107,.08); font-size: 8px; }
+    .quote-preview { display: flex; flex-direction: column; justify-content: space-between; margin-top: 20px; min-height: 157px; padding: 18px; border: 1px solid rgba(139,184,255,.14); border-radius: 11px; background: linear-gradient(135deg, rgba(139,184,255,.075), rgba(139,184,255,.015)); }
+    .quote-mark { color: var(--blue); font: 700 29px Georgia, serif; line-height: 1; }
+    .quote-preview p { max-width: 420px; margin: 9px 0 17px; color: #c7d2e1; font-size: 12px; line-height: 1.65; }
+    .quote-source { display: flex; align-items: center; justify-content: space-between; color: #8290a3; font-size: 9px; }
+    .quote-source strong { color: #dce5f0; font-weight: 600; }
+    .media-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+    .media-card { min-width: 0; overflow: hidden; border: 1px solid rgba(194,209,231,.13); border-radius: 17px; background: linear-gradient(145deg, #121923, #0e131b); box-shadow: 0 18px 48px rgba(0,0,0,.24); }
+    .media-frame { position: relative; display: grid; aspect-ratio: 16 / 10; place-items: center; overflow: hidden; border-bottom: 1px solid rgba(194,209,231,.1); background: radial-gradient(ellipse at 50% 38%, rgba(139,184,255,.09), transparent 55%), repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0 1px, transparent 1px 12px), #0b1017; }
+    .media-frame::before { position: absolute; inset: 12px; border: 1px dashed rgba(194,209,231,.16); border-radius: 10px; content: ""; pointer-events: none; }
+    .media-frame-video::before { display: none; }
+    .media-frame video { display: block; width: 100%; height: 100%; object-fit: contain; background: #080b10; }
+    .media-frame-image::before { display: none; }
+    .media-frame-image img { display: block; width: 100%; height: 100%; object-fit: contain; background: #f5f8fa; }
+    .media-placeholder { display: grid; justify-items: center; gap: 9px; padding: 20px; color: #8d9bad; text-align: center; }
+    .media-placeholder svg { width: 31px; height: 31px; color: var(--accent); }
+    .media-placeholder strong { color: #d8e1ec; font-size: 12px; font-weight: 600; }
+    .media-placeholder span { font-size: 10px; }
+    .media-caption { padding: 17px 19px 19px; }
+    .media-caption h3 { margin: 0 0 5px; font: 700 14px "Manrope", sans-serif; }
+    .media-caption p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .cases { padding: 60px 0; }
+    .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .case-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(145deg, #121923, #0e131b); }
+    .case-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; padding: 22px 23px 19px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.018); }
+    .case-card-head h3 { margin: 0 0 5px; font: 700 16px "Manrope", sans-serif; letter-spacing: -.025em; }
+    .case-card-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .case-icon { display: grid; flex: 0 0 38px; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(166,243,107,.2); border-radius: 12px; color: var(--accent); background: rgba(166,243,107,.07); }
+    .case-icon svg { width: 19px; height: 19px; }
+    .case-flow { display: grid; gap: 0; padding: 5px 23px 20px; }
+    .case-step { display: grid; grid-template-columns: 31px 1fr; gap: 12px; padding: 17px 0; border-bottom: 1px solid rgba(194,209,231,.075); }
+    .case-step:last-child { padding-bottom: 0; border-bottom: 0; }
+    .case-step-icon { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid rgba(194,209,231,.11); border-radius: 9px; color: #aab7c8; background: rgba(255,255,255,.025); }
+    .case-step-icon svg { width: 15px; height: 15px; }
+    .case-step.result .case-step-icon { border-color: rgba(166,243,107,.22); color: var(--accent); background: rgba(166,243,107,.08); }
+    .case-step h4 { margin: 1px 0 5px; color: #dce5f0; font: 700 11px "Manrope", sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+    .case-step p { margin: 0; color: #a6b2c2; font-size: 12px; line-height: 1.65; }
+    .case-step.result p { color: #d2ddc9; }
+    .benchmark-note { margin: 19px 0 0; color: #778497; font-size: 10px; line-height: 1.55; text-align: center; }
+    .capture { padding: 60px 0; }
+    .capture-panel { display: grid; grid-template-columns: 1fr .88fr; gap: 70px; align-items: center; padding: 47px; border: 1px solid rgba(166,243,107,.15); border-radius: 22px; background: radial-gradient(ellipse at 0 0, rgba(166,243,107,.07), transparent 54%), #10161f; }
+    .capture-copy h2 { max-width: 480px; margin: 10px 0; font-size: 37px; }
+    .capture-copy > p { max-width: 430px; margin-bottom: 17px; color: var(--muted); font-size: 14px; }
+    .benefit-list { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; color: #c5cfdb; font-size: 12px; }
+    .benefit-list li { display: flex; align-items: center; gap: 9px; }
+    .check { display: grid; flex: 0 0 17px; width: 17px; height: 17px; place-items: center; border-radius: 50%; color: var(--accent); background: rgba(166,243,107,.12); font-size: 10px; }
+    .capture-form { padding: 24px; border: 1px solid rgba(194,209,231,.11); border-radius: 15px; background: rgba(8,12,18,.48); }
+    .form-title { margin-bottom: 4px; font: 700 16px "Manrope", sans-serif; }
+    .form-hint { margin-bottom: 19px; color: #8996a8; font-size: 11px; }
+    .form-capacity { margin: -10px 0 17px; color: #aeb9c8; font-size: 10px; line-height: 1.55; }
+    .field { display: block; margin-bottom: 13px; }
+    .field span { display: block; margin-bottom: 6px; color: #c5cfdb; font-size: 10px; font-weight: 600; }
+    .field input { width: 100%; height: 43px; padding: 0 12px; outline: none; border: 1px solid rgba(194,209,231,.13); border-radius: 9px; color: var(--text); background: #0d1219; font-size: 12px; transition: border-color .2s; }
+    .field input::placeholder { color: #647184; }
+    .field input:focus { border-color: rgba(166,243,107,.6); }
+    .field select { width: 100%; height: 43px; padding: 0 12px; outline: none; border: 1px solid rgba(194,209,231,.13); border-radius: 9px; color: var(--text); background: #0d1219; font-size: 12px; transition: border-color .2s; }
+    .field select:focus { border-color: rgba(166,243,107,.6); }
+    .messenger-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 15px; }
+    .messenger-link { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 11px; border: 1px solid var(--line); border-radius: 10px; color: #c5cfdb; background: rgba(255,255,255,.025); font-size: 11px; transition: transform .2s, border-color .2s, background .2s, color .2s; }
+    .messenger-link:hover { transform: translateY(-2px); border-color: rgba(166,243,107,.4); color: var(--text); background: rgba(166,243,107,.07); }
+    .messenger-link svg { width: 16px; height: 16px; }
+    .messenger-link[data-messenger="telegram"] { color: #55a9e8; }
+    .messenger-link[data-messenger="whatsapp"] { color: #25d366; }
+    .messenger-link[data-messenger="max"] { color: #a78bfa; }
+    .messenger-link[data-messenger="telegram"]:hover { border-color: rgba(42, 171, 238, .48); background: rgba(42, 171, 238, .09); }
+    .messenger-link[data-messenger="whatsapp"]:hover { border-color: rgba(37, 211, 102, .45); background: rgba(37, 211, 102, .08); }
+    .messenger-link[data-messenger="max"]:hover { border-color: rgba(167, 139, 250, .45); background: rgba(167, 139, 250, .08); }
+    .form-messengers { justify-content: center; }
+    .footer-inner { flex-wrap: wrap; }
+    .footer-messengers { margin: 0; }
+    .footer-messengers .messenger-link { min-height: 33px; padding-inline: 9px; }
+    .contact-widget { position: fixed; z-index: 20; right: max(22px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); }
+    .contact-toggle { display: grid; width: 58px; height: 58px; place-items: center; border: 0; border-radius: 50%; color: var(--accent-dark); background: var(--accent); box-shadow: 0 10px 35px rgba(0,0,0,.42), 0 0 0 7px rgba(166,243,107,.09); cursor: pointer; transition: transform .2s, box-shadow .2s; }
+    .contact-toggle:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 40px rgba(0,0,0,.5), 0 0 0 9px rgba(166,243,107,.12); }
+    .contact-toggle svg { width: 24px; height: 24px; }
+    .contact-panel { position: absolute; right: 0; bottom: 72px; width: min(320px, calc(100vw - 36px)); padding: 18px; border: 1px solid rgba(194,209,231,.15); border-radius: 17px; background: #111822; box-shadow: 0 20px 60px rgba(0,0,0,.5); opacity: 0; visibility: hidden; transform: translateY(8px) scale(.98); transform-origin: bottom right; transition: opacity .2s, transform .2s, visibility .2s; }
+    .contact-widget.is-open .contact-panel { opacity: 1; visibility: visible; transform: none; }
+    .contact-panel h2 { margin: 0 0 5px; font-size: 17px; }
+    .contact-panel p { margin: 0; color: var(--muted); font-size: 12px; }
+    .contact-panel .messenger-links { display: grid; grid-template-columns: 1fr; margin: 13px 0; }
+    .contact-panel .messenger-link { min-height: 40px; }
+    .quick-question { display: flex; width: 100%; min-height: 40px; align-items: center; justify-content: center; border: 1px solid rgba(166,243,107,.25); border-radius: 10px; color: var(--accent); background: rgba(166,243,107,.07); font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s; }
+    .quick-question:hover { background: rgba(166,243,107,.13); }
+    .quick-question:disabled { opacity: .65; cursor: wait; }
+    .capture-form .button { width: 100%; min-height: 46px; margin-top: 4px; font-size: 12px; }
+    .form-legal { margin: 11px 0 0; color: #6f7c8e; font-size: 9px; line-height: 1.5; text-align: center; }
+    .site-footer { padding: 23px 0; border-top: 1px solid rgba(194,209,231,.07); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; color: #758296; font-size: 10px; }
+    .footer-brand { color: #b8c3d1; font-weight: 600; }
+    @media (max-width: 900px) {
+      .hero { padding: 60px 0; }
+      .hero-grid { gap: 28px; }
+      .hero-content { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .hero-offer { max-width: none; }
+      .hero-visual { width: min(620px, 90%); margin: 0 auto; }
+      .dashboard { transform: none; }
+      .float-card { right: -20px; }
+      .capture-panel { gap: 34px; padding: 36px; }
+      .capture-copy h2 { font-size: 32px; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 36px, var(--max)); }
+      .site-header { min-height: 0; }
+      .nav { min-height: 0; flex-direction: column; align-items: stretch; gap: 6px; padding-top: 10px; padding-bottom: 8px; }
+      .nav-links { width: 100%; gap: 3px; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links > a:not(.nav-cta) { min-height: 36px; padding-inline: 10px; font-size: 11px; white-space: nowrap; }
+      .nav-cta { min-height: 36px; margin-left: 2px; padding: 0 10px; font-size: 11px; }
+      .brand { font-size: 14px; }
+      .brand-mark { width: 30px; height: 30px; }
+      .hero { padding: 40px 0; }
+      h1 { margin-top: 14px; font-size: clamp(39px, 11vw, 55px); }
+      .hero-copy { font-size: 15px; }
+      .urgency-badge { font-size: 11px; }
+      .hero-grid { gap: 24px; }
+      .hero-content { gap: 26px; }
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-heading h1 { font-size: clamp(35px, 9vw, 48px); }
+      .hero-actions { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .hero-visual { width: 100%; }
+      .dash-body { padding: 13px; }
+      .dash-top { padding: 13px; }
+      .metric { padding: 9px; }
+      .metric-value { font-size: 17px; }
+      .chart-area { height: 125px; }
+      .lead-row { grid-template-columns: 1.1fr 1fr .6fr; padding: 8px; }
+      .float-card { right: -6px; bottom: -27px; padding: 10px 12px; }
+      .hero { padding: 40px 0; }
+      .section, .faq, .cases, .capture, .showcase { padding: 40px 0; }
+      .section-heading { margin-bottom: 22px; }
+      .section-subtitle { font-size: 13px; }
+      .steps, .showcase-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; gap: 14px; }
+      .case-card-head { padding: 19px 18px 16px; }
+      .case-flow { padding: 3px 18px 18px; }
+      .cases { padding: 40px 0; }
+      .step-card { min-height: auto; padding: 21px; }
+      .step-number { margin-bottom: 14px; }
+      .showcase-card { min-height: 0; padding: 18px; }
+      .media-gallery { grid-template-columns: 1fr; gap: 14px; margin-top: 16px; }
+      .media-caption { padding: 15px 16px 17px; }
+      .capture { padding: 40px 0; }
+      .capture-panel { grid-template-columns: 1fr; gap: 22px; padding: 25px 19px; }
+      .capture-copy h2 { font-size: 31px; }
+      .capture-form { padding: 19px; }
+      .footer-inner { align-items: flex-start; gap: 8px; flex-direction: column; }
+      .footer-messengers { flex-direction: row; margin: 2px 0; }
+      .footer-messengers .messenger-link { min-height: 34px; }
+      .contact-widget { right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+      .contact-toggle { width: 54px; height: 54px; }
+      .contact-panel { bottom: 66px; padding: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Основная навигация">
+      <a class="brand" href="#top" aria-label="Signal AI — на главную">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16.5 9 11l3.2 3.2L20 6.5M15 6.5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        signal<span style="color:var(--accent)">.ai</span>
+      </a>
+      <div class="nav-links">
+        <a href="#how">Как работает</a>
+        <a href="#inside">Что внутри</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#get-audit">Получить аудит <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-heading">
+          <h1 style="font-size: clamp(28px, 3.5vw, 42px); line-height: 1.2;">
+            <span style="color: #ffffff; white-space: nowrap;">Найдите потенциальных B2B-клиентов для</span><br>
+            <span style="color: var(--accent);">производства, поставок и сложных услуг</span>
+          </h1>
+        </div>
+        <div class="hero-content">
+          <div class="hero-offer">
+            <p class="hero-copy">Подготовим бесплатную подборку из 10 компаний с открытыми деловыми сигналами и готовыми ИИ-скриптами для первого контакта — для производства, сертификации, B2B-услуг и консалтинга.</p>
+          <div class="urgency-badge" role="status">
+            <span class="urgency-badge-icon" aria-hidden="true">🔥</span>
+            <span><strong>Набор на бесплатный AI-аудит текущей недели закрывается в пятницу в 18:00 (осталось 3 места)</strong><br>
+              <span class="countdown" data-weekly-countdown aria-live="off">До закрытия набора: <span class="countdown-unit" data-days>— дн.</span><span class="countdown-unit" data-hours>— ч.</span><span class="countdown-unit" data-minutes>— мин.</span></span>
+            </span>
+          </div>
+            <p class="hero-hook"><strong>Без холодных обзвонов вслепую.</strong> ИИ находит компании в момент их активного роста и готовит скрипт для первого контакта.</p>
+            <div class="hero-actions">
+              <a class="button" href="#get-audit">Получить подборку <span aria-hidden="true">↗</span></a>
+              <span class="action-note">Бесплатный пример · без обязательств</span>
+            </div>
+            <div class="hero-proof">
+              <div class="avatar-stack" aria-hidden="true"><span class="avatar">АК</span><span class="avatar">МЛ</span><span class="avatar">ДВ</span></div>
+              <span><span class="proof-strong">Для руководителей B2B-компаний</span> · продажи и развитие</span>
+            </div>
+          </div>
+        <div class="hero-visual" aria-label="Пример обзора B2B-рынка">
+          <div class="dashboard">
+            <div class="dash-top"><span class="dash-title">Обзор рынка · промышленный опт</span><span class="dash-controls" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="dash-body">
+              <div class="dash-summary">
+                <div class="metric"><div class="metric-label">Найдено компаний</div><div class="metric-value">248<span class="metric-change">+18%</span></div></div>
+                <div class="metric"><div class="metric-label">Сильный сигнал</div><div class="metric-value">36<span class="metric-change">+12</span></div></div>
+                <div class="metric"><div class="metric-label">Приоритетных</div><div class="metric-value">10</div></div>
+              </div>
+              <div class="chart-area">
+                <span class="chart-label">Динамика рыночных сигналов</span>
+                <svg class="chart-svg" viewBox="0 0 540 100" preserveAspectRatio="none" aria-hidden="true">
+                  <defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#a6f36b" stop-opacity=".24"/><stop offset="1" stop-color="#a6f36b" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M0 80 C35 76 40 65 75 69 S125 52 155 61 S205 66 235 42 S290 56 320 39 S370 48 400 27 S450 44 480 20 S520 25 540 8 V100 H0Z" fill="url(#fill)"/>
+                  <path d="M0 80 C35 76 40 65 75 69 S125 52 155 61 S205 66 235 42 S290 56 320 39 S370 48 400 27 S450 44 480 20 S520 25 540 8" fill="none" stroke="#a6f36b" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div class="lead-list" aria-label="Примеры найденных лидов">
+                <div class="lead-row"><span class="lead-company">ПромСнаб Регион</span><span class="lead-trigger">Новый филиал</span><span class="lead-score">92 / 100</span></div>
+                <div class="lead-row"><span class="lead-company">ТехКомплект</span><span class="lead-trigger">Закупка оборудования</span><span class="lead-score">87 / 100</span></div>
+                <div class="lead-row"><span class="lead-company">Центр качества</span><span class="lead-trigger">Подготовка к аудиту</span><span class="lead-score">84 / 100</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card"><span class="float-icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m10 2 1.8 5.2L17 9l-5.2 1.8L10 16l-1.8-5.2L3 9l5.2-1.8L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m16 13 .8 2.2L19 16l-2.2.8L16 19l-.8-2.2L13 16l2.2-.8L16 13Z" fill="currentColor"/></svg></span><span class="float-text"><strong>Сигнал + контекст + скрипт</strong><span>Всё для уверенного первого касания</span></span></div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-divider" id="fit">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Для кого это решение</div>
+          <h2>Подходит компаниям, которые продают бизнесу</h2>
+          <p class="section-subtitle">Фокус — на организациях с длинным циклом сделки, профессиональными закупщиками и понятной ценностью для корпоративного клиента.</p>
+        </div>
+        <div class="steps">
+          <article class="step-card"><div class="step-number">✓</div><h3>Идеально для</h3><p>B2B-услуг, сертификации и аудита, промышленного опта, консалтинга, производителей и поставщиков оборудования.</p></article>
+          <article class="step-card"><div class="step-number">×</div><h3>Не подойдёт</h3><p>IT-компаниям и разработчикам программного обеспечения, B2C-рознице и общепиту.</p></article>
+          <article class="step-card"><div class="step-number">01</div><h3>Примеры отраслей</h3><p>Юридический консалтинг, промышленная химия, поставка оборудования, сертификация продукции и производственный аудит.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-divider" id="how">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Три шага к новым возможностям</div>
+          <h2>Как проходит исследование рынка</h2>
+          <p class="section-subtitle">Изучаем открытые деловые сигналы, чтобы определить, каким компаниям ваше предложение может быть актуально.</p>
+        </div>
+        <div class="steps">
+          <article class="step-card"><div class="step-number">01</div><h3>Задаёте ориентиры</h3><p>Расскажите, кому продаёте, в каких регионах работаете и какие компании вам интересны.</p></article>
+          <article class="step-card"><div class="step-number">02</div><h3>Анализируем рынок</h3><p>Отбираем релевантные организации и изучаем открытые сигналы: расширение производства, закупки, тендеры и сертификацию.</p></article>
+          <article class="step-card"><div class="step-number">03</div><h3>Готовим план контакта</h3><p>Передаём подборку компаний с источником информации, объяснением повода и вариантом начала диалога.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase" id="inside">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Результат аудита</div>
+          <h2>Не просто список компаний</h2>
+          <p class="section-subtitle">Каждый лид — это конкретная причина начать разговор и заготовка для первого касания.</p>
+        </div>
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <div class="showcase-head"><div><h3>Карта возможностей</h3><p>Приоритетные компании и подтверждённые сигналы</p></div><span class="mini-tag">Пример данных</span></div>
+            <div class="table-preview" role="table" aria-label="Пример списка лидов">
+              <div class="table-header" role="row"><span role="columnheader">Компания</span><span role="columnheader">Триггер</span><span role="columnheader">Приоритет</span></div>
+              <div class="table-row" role="row"><strong role="cell">ПромСнаб Регион</strong><span role="cell">Открытие филиала</span><span class="status" role="cell">Высокий</span></div>
+              <div class="table-row" role="row"><strong role="cell">ТехКомплект</strong><span role="cell">Расширение закупок</span><span class="status" role="cell">Высокий</span></div>
+              <div class="table-row" role="row"><strong role="cell">Центр качества</strong><span role="cell">Подготовка к сертификации</span><span class="status" role="cell">Высокий</span></div>
+            </div>
+          </article>
+          <article class="showcase-card">
+            <div class="showcase-head"><div><h3>Готовый контекст для диалога</h3><p>Понимайте, почему обращаетесь именно сейчас</p></div><span class="mini-tag">Пример скрипта</span></div>
+            <div class="quote-preview"><div><span class="quote-mark">“</span><p>«Увидел, что ваша компания расширяет производственные мощности. Мы поставляем оборудование для таких задач и можем подобрать решение под ваши параметры. Удобно обсудить потребность?»</p></div><div class="quote-source"><span><strong>Триггер:</strong> расширение производства</span><span>Пример обращения</span></div></div>
+          </article>
+        </div>
+        <div class="media-gallery" aria-label="Скриншоты продукта">
+          <figure class="media-card">
+            <div class="media-frame media-frame-video">
+              <video id="dashboard-video" controls muted playsinline preload="metadata" aria-label="Видеообзор примера исследования рынка">
+                <source src="assets/dashboard-demo.mp4" type="video/mp4">
+                Ваш браузер не поддерживает воспроизведение этого видео.
+              </video>
+            </div>
+            <figcaption class="media-caption"><h3>Пример обзора рынка</h3><p>Подборка компаний, деловые сигналы и поводы для первого контакта.</p></figcaption>
+          </figure>
+          <figure class="media-card">
+            <div class="media-frame media-frame-image">
+              <img src="assets/table-screenshot.png" alt="Скриншот базы лидов: ID, компания, ИНН, сигнал, источник, связь с ISO 9001, повод для звонка, потенциал сделки и статусы">
+            </div>
+            <figcaption class="media-caption"><h3>Таблица базы данных</h3><p>Список компаний, триггеры интереса, приоритеты и контекст для первого контакта.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cases section-divider" id="cases">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Примеры сценариев</div>
+          <h2>Как находить поводы для B2B-контакта</h2>
+          <p class="section-subtitle">Сценарии для компаний в сертификации, аудите, консалтинге, производстве и оптовых продажах.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card">
+            <div class="case-card-head">
+              <div><h3>Сертификация и аудит</h3><p>Поиск компаний с потребностью в подтверждении соответствия</p></div>
+              <span class="case-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 19 6v5c0 4.5-2.9 7.7-7 10-4.1-2.3-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="case-flow">
+              <div class="case-step"><span class="case-step-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><circle cx="8.7" cy="8.7" r="5.7" stroke="currentColor" stroke-width="1.5"/><path d="m13 13 4 4M8.7 5.8v3.1l2 1.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><div><h4>Задача</h4><p>Поставщику услуг по сертификации важно находить предприятия с актуальной потребностью в подтверждении соответствия и подготовке к аудиту.</p></div></div>
+              <div class="case-step"><span class="case-step-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14M5 10h10M7 15h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="5" r="1.5" fill="#10151e" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="1.5" fill="#10151e" stroke="currentColor" stroke-width="1.4"/></svg></span><div><h4>Подход</h4><p>Составить список организаций по отрасли и региону, проверить открытые сведения о тендерах, производстве и требованиях к сертификации.</p></div></div>
+              <div class="case-step result"><span class="case-step-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 15 8 10l3 2 6-7M12.5 5H17v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>На выходе</h4><p>Список подходящих предприятий, подтверждённые открытые источники и персональные поводы для разговора о сертификации.</p></div></div>
+            </div>
+          </article>
+          <article class="case-card">
+            <div class="case-card-head">
+              <div><h3>Оборудование и промышленный опт</h3><p>Выход на предприятия при расширении производства</p></div>
+              <span class="case-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9m5 10V5m5 14v-7m5 7V3M2 19h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m4 7 5-3 5 5 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="case-flow">
+              <div class="case-step"><span class="case-step-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 4.5h14v11H3zM6 8h8M6 11h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="m13 14 2 2 3-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Задача</h4><p>Оптовому поставщику оборудования важно выходить на предприятия перед расширением мощностей и обновлением производственных линий.</p></div></div>
+              <div class="case-step"><span class="case-step-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2.5v3m0 9v3M2.5 10h3m9 0h3M4.7 4.7l2.1 2.1m6.4 6.4 2.1 2.1m0-10.6-2.1 2.1m-6.4 6.4-2.1 2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg></span><div><h4>Подход</h4><p>Отобрать предприятия по отрасли, региону и масштабу, изучить открытые сведения о строительстве, закупках и модернизации.</p></div></div>
+              <div class="case-step result"><span class="case-step-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M3 15 8 10l3 2 6-7M12.5 5H17v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>На выходе</h4><p>Приоритетный список потенциальных покупателей, описание их потребностей и поводы для предметного разговора о поставке.</p></div></div>
+            </div>
+          </article>
+        </div>
+        <p class="benchmark-note">Иллюстративные примеры сценариев. Это не подтверждённые результаты конкретных клиентов; фактические показатели зависят от рынка и исходных процессов компании.</p>
+      </div>
+    </section>
+
+    <section class="faq section-divider" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Ответы на вопросы</div>
+          <h2 id="faq-title">Часто задаваемые вопросы</h2>
+          <p class="section-subtitle">Коротко о данных, сроках и следующем шаге после аудита.</p>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3 style="margin:0"><button class="faq-question" type="button" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1"><span>Откуда ИИ-Радар собирает данные и насколько это легально?</span><span class="faq-icon" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" hidden><p>Только из публичных открытых источников — реестры ФНС, вакансии hh.ru, тендерные площадки. 100% легально.</p></div>
+          </article>
+          <article class="faq-item">
+            <h3 style="margin:0"><button class="faq-question" type="button" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2"><span>Нужно ли настраивать софт на нашей стороне?</span><span class="faq-icon" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" hidden><p>Нет, в рамках аудита вы получаете готовый отчет, а при внедрении мы сами настраиваем интеграцию с вашей amoCRM/Битрикс24.</p></div>
+          </article>
+          <article class="faq-item">
+            <h3 style="margin:0"><button class="faq-question" type="button" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3"><span>Сколько времени занимает подготовка 10 лидов?</span><span class="faq-icon" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" hidden><p>До 24 часов с момента отправки заявки.</p></div>
+          </article>
+          <article class="faq-item">
+            <h3 style="margin:0"><button class="faq-question" type="button" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4"><span>Что происходит после получения аудита?</span><span class="faq-icon" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" hidden><p>Вы тестируете лиды в работе. Если результат нравится — обсуждаем внедрение системы под ваш бизнес.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="capture" id="get-audit" aria-labelledby="capture-title">
+      <div class="container">
+        <div class="capture-panel" style="grid-template-columns:1fr">
+          <div class="capture-copy">
+            <div class="section-kicker">Начните с бесплатного аудита</div>
+            <h2 id="capture-title">Получить пример подборки компаний</h2>
+            <p>Укажите отрасль и рабочий контакт — подготовим пример отчёта с сигналами и поводами для первого контакта.</p>
+          </div>
+          <form class="capture-form" id="lead-form">
+            <div class="form-title">Получить демо-отчёт</div>
+            <div class="form-hint">Укажите отрасль, чтобы увидеть пример исследования для вашего рынка</div>
+            <p class="form-capacity">Не более 10 компаний в неделю — подготовим отчёт с источниками и поводами для контакта.</p>
+            <label class="field"><span>Ваше имя</span><input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name" required></label>
+            <label class="field"><span>Компания / отрасль</span><input type="text" name="company" placeholder="Например, сертификация или опт оборудования" autocomplete="organization" required></label>
+            <label class="field"><span>Удобный способ связи</span><select name="contactMethod" aria-label="Выберите способ связи"><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="max">MAX</option><option value="other">Email или телефон</option></select></label>
+            <label class="field"><span>Контакт для связи</span><input type="text" name="contact" placeholder="@username, номер или email" autocomplete="off" required></label>
+            <button class="button" type="submit">Получить демо-отчёт <span aria-hidden="true">→</span></button>
+            <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+            <nav class="messenger-links form-messengers" aria-label="Связаться через мессенджер"></nav>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><a class="footer-brand" href="#top">signal.ai</a><span>Исследование рынка для B2B-компаний</span><nav class="messenger-links footer-messengers" aria-label="Мессенджеры"></nav><span>© 2026 Signal AI</span></div>
+  </footer>
+  <aside class="contact-widget" id="contact-widget" aria-label="Быстрая связь">
+    <div class="contact-panel" id="contact-panel" aria-labelledby="contact-panel-title" aria-hidden="true">
+      <h2 id="contact-panel-title">Связаться с нами</h2>
+      <p>Выберите удобный мессенджер или задайте быстрый вопрос.</p>
+      <nav class="messenger-links" aria-label="Выбрать мессенджер"></nav>
+      <button class="quick-question" type="button">Быстрый вопрос</button>
+    </div>
+    <button class="contact-toggle" type="button" aria-label="Открыть способы связи" aria-expanded="false" aria-controls="contact-panel">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-5.5A7.5 7.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </aside>
+  <script>
+    // Отсчёт до ближайшей пятницы, 18:00 по локальному времени посетителя.
+    (() => {
+      const countdowns = document.querySelectorAll('[data-weekly-countdown]');
+      if (!countdowns.length) return;
+      const getDeadline = (now) => {
+        const daysUntilFriday = (5 - now.getDay() + 7) % 7;
+        const deadline = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilFriday, 18, 0, 0, 0);
+        if (deadline <= now) deadline.setDate(deadline.getDate() + 7);
+        return deadline;
+      };
+      let deadline = getDeadline(new Date());
+      const updateCountdown = () => {
+        const now = new Date();
+        if (now >= deadline) deadline = getDeadline(now);
+        const remaining = Math.max(0, deadline - now);
+        const days = Math.floor(remaining / 86400000);
+        const hours = Math.floor((remaining % 86400000) / 3600000);
+        const minutes = Math.floor((remaining % 3600000) / 60000);
+        countdowns.forEach((element) => {
+          element.querySelector('[data-days]').textContent = `${days} дн.`;
+          element.querySelector('[data-hours]').textContent = `${String(hours).padStart(2, '0')} ч.`;
+          element.querySelector('[data-minutes]').textContent = `${String(minutes).padStart(2, '0')} мин.`;
+        });
+      };
+      updateCountdown();
+      window.setInterval(updateCountdown, 60000);
+    })();
+
+    // Замените значения на ссылки и контакты проекта перед публикацией.
+    const CONTACTS = {
+      telegram: { label: 'Telegram', href: 'https://t.me/your_username', hint: '@your_username', icon: '<path d="m21 3-7.2 18-4.1-7.1L3 10.2 21 3Z"/><path d="m9.7 13.9 5.1-5.1"/>' },
+      whatsapp: { label: 'WhatsApp', href: 'https://wa.me/70000000000', hint: '+7 000 000-00-00', icon: '<path d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.3-4A8 8 0 1 1 20 11.7Z"/><path d="M9 8.5c.4 2 2.2 3.8 4.3 4.5l1.2-1 2 1-.4 1.6c-3.8 1.2-8.6-2.9-8.3-6.7L9.5 7l1 1.8L9 10"/>' },
+      max: { label: 'MAX', href: 'https://max.ru/', hint: 'Контакт в MAX', icon: '<path d="M5 5.5A2.5 2.5 0 0 1 7.5 3h9A2.5 2.5 0 0 1 19 5.5v8a2.5 2.5 0 0 1-2.5 2.5h-5L6 20v-4.5a2.5 2.5 0 0 1-1-2v-8Z"/><path d="M8 8h8M8 11h5"/>' }
+    };
+    const messengerMarkup = (key, item) => `<a class="messenger-link" data-messenger="${key}" href="${item.href}" target="_blank" rel="noopener noreferrer" aria-label="Открыть ${item.label}: ${item.hint}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${item.icon}</svg><span>${item.label}</span></a>`;
+    document.querySelectorAll('.messenger-links').forEach((nav) => {
+      nav.innerHTML = Object.entries(CONTACTS).map(([key, item]) => messengerMarkup(key, item)).join('');
+    });
+
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        const answer = document.getElementById(button.getAttribute('aria-controls'));
+        button.setAttribute('aria-expanded', String(!expanded));
+        answer.hidden = expanded;
+      });
+    });
+
+    document.getElementById('lead-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const contact = this.elements.contact.value.trim();
+      const method = this.elements.contactMethod.value;
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+      const isPhone = (contact.match(/\d/g) || []).length >= 7;
+      const isTelegram = method === 'telegram' && /^@?[a-zA-Z0-9_]{5,32}$/.test(contact);
+
+      if (!(method === 'telegram' ? isTelegram : method === 'whatsapp' || method === 'max' ? isPhone : isEmail || isPhone)) {
+        const messages = { telegram: 'Введите Telegram username (например, @username).', whatsapp: 'Введите корректный номер WhatsApp.', max: 'Введите номер или контакт для MAX.', other: 'Введите корректный email или номер телефона.' };
+        this.elements.contact.setCustomValidity(messages[method]);
+        this.elements.contact.reportValidity();
+        return;
+      }
+
+      this.elements.contact.setCustomValidity('');
+      window.alert('Данные успешно отправлены! Генерируем демо-аудит для вашей ниши.');
+      this.reset();
+    });
+
+    document.querySelector('#lead-form [name="contact"]').addEventListener('input', function () {
+      this.setCustomValidity('');
+    });
+
+    const contactWidget = document.getElementById('contact-widget');
+    const contactToggle = contactWidget.querySelector('.contact-toggle');
+    const contactPanel = contactWidget.querySelector('.contact-panel');
+    const setContactOpen = (open) => {
+      contactWidget.classList.toggle('is-open', open);
+      contactToggle.setAttribute('aria-expanded', String(open));
+      contactToggle.setAttribute('aria-label', open ? 'Закрыть способы связи' : 'Открыть способы связи');
+      contactPanel.setAttribute('aria-hidden', String(!open));
+    };
+    contactToggle.addEventListener('click', () => setContactOpen(!contactWidget.classList.contains('is-open')));
+    document.addEventListener('click', (event) => {
+      if (!contactWidget.contains(event.target)) setContactOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setContactOpen(false);
+    });
+    contactWidget.querySelector('.quick-question').addEventListener('click', (event) => {
+      const button = event.currentTarget;
+      const message = encodeURIComponent('Здравствуйте! У меня есть вопрос об исследовании B2B-рынка.');
+      const links = {
+        telegram: `${CONTACTS.telegram.href}?text=${message}`,
+        whatsapp: `${CONTACTS.whatsapp.href}?text=${message}`,
+        max: CONTACTS.max.href
+      };
+      const preferred = window.matchMedia('(max-width: 640px)').matches ? 'whatsapp' : 'telegram';
+      window.open(links[preferred], '_blank', 'noopener,noreferrer');
+      button.textContent = `Откроется ${CONTACTS[preferred].label}`;
+      button.disabled = true;
+      window.setTimeout(() => { button.textContent = 'Быстрый вопрос'; button.disabled = false; }, 1800);
+    });
+
+    const dashboardVideo = document.querySelector('#dashboard-video');
+    if (dashboardVideo && 'IntersectionObserver' in window) {
+      dashboardVideo.playbackRate = 1.12;
+      const videoObserver = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          dashboardVideo.play().catch(() => {});
+        } else {
+          dashboardVideo.pause();
+        }
+      }, { threshold: 0.35 });
+      videoObserver.observe(dashboardVideo);
+    }
+  </script>
+</body>
+</html>
