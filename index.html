@@ -249,6 +249,7 @@
     .field select { width: 100%; height: 43px; padding: 0 12px; outline: none; border: 1px solid rgba(194,209,231,.13); border-radius: 9px; color: var(--text); background: #0d1219; font-size: 12px; transition: border-color .2s; }
     .field select:focus { border-color: rgba(166,243,107,.6); }
     .messenger-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 15px; }
+    .messenger-links[hidden] { display: none !important; }
     .messenger-link { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 11px; border: 1px solid var(--line); border-radius: 10px; color: #c5cfdb; background: rgba(255,255,255,.025); font-size: 11px; transition: transform .2s, border-color .2s, background .2s, color .2s; }
     .messenger-link:hover { transform: translateY(-2px); border-color: rgba(166,243,107,.4); color: var(--text); background: rgba(166,243,107,.07); }
     .messenger-link svg { width: 16px; height: 16px; }
@@ -478,7 +479,7 @@
         </div>
         <div class="steps">
           <article class="step-card"><div class="step-number">✓</div><h3>Идеально для</h3><p>B2B-услуг, сертификации и аудита, промышленного опта, консалтинга, производителей и поставщиков оборудования.</p></article>
-          <article class="step-card"><div class="step-number">×</div><h3>Не подойдёт</h3><p>IT-компаниям и разработчикам программного обеспечения, B2C-рознице и общепиту.</p></article>
+          <article class="step-card"><div class="step-number">×</div><h3>Не подойдёт</h3><p>B2C-рознице, общепиту и микробизнесу</p></article>
           <article class="step-card"><div class="step-number">01</div><h3>Примеры отраслей</h3><p>Юридический консалтинг, промышленная химия, поставка оборудования, сертификация продукции и производственный аудит.</p></article>
         </div>
       </div>
@@ -634,10 +635,10 @@
           <form class="capture-form" id="lead-form">
             <p class="form-capacity">Не более 10 компаний в неделю — подготовим отчёт с источниками и поводами для контакта.</p>
             <label class="field"><span>Ваше имя</span><input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name" required></label>
-            <label class="field"><span>Компания / отрасль</span><input type="text" name="company" placeholder="Например, сертификация или опт оборудования" autocomplete="organization" required></label>
-            <label class="field"><span>Удобный способ связи</span><select name="contactMethod" aria-label="Выберите способ связи"><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="max">MAX</option><option value="other">Email или телефон</option></select></label>
-            <label class="field"><span>Контакт для связи</span><input type="text" name="contact" placeholder="@username, номер или email" autocomplete="off" required></label>
-            <button class="button" type="submit">Получить демо-отчёт <span aria-hidden="true">→</span></button>
+            <label class="field"><span>Ваш телефон</span><input type="tel" name="phone" placeholder="Номер для связи" autocomplete="tel" inputmode="tel" required></label>
+            <button class="button" type="submit">Отправить <span aria-hidden="true">→</span></button>
+            <p class="form-hint" id="form-status" role="status" aria-live="polite">После нажатия выберите способ передачи заявки.</p>
+            <nav class="messenger-links form-messengers" id="submission-choices" aria-label="Выберите способ отправки заявки" hidden></nav>
             <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных в соответствии с <a href="#privacy-policy-modal" data-privacy-modal>Политикой конфиденциальности</a>.</p>
             <nav class="messenger-links form-messengers" aria-label="Связаться через мессенджер"></nav>
           </form>
@@ -771,11 +772,13 @@
       window.setInterval(updateCountdown, 60000);
     })();
 
-    // Замените значения на ссылки и контакты проекта перед публикацией.
+    // Контакты применяются для создания ссылок; телефон не отображается текстом в интерфейсе.
+    const whatsappDigits = ['7', '968', '261', '32', '33'].join('');
+    const emailAddress = ['moro7z', 'yandex.ru'].join('@');
     const CONTACTS = {
-      telegram: { label: 'Telegram', href: 'https://t.me/your_username', hint: '@your_username', icon: '<path d="m21 3-7.2 18-4.1-7.1L3 10.2 21 3Z"/><path d="m9.7 13.9 5.1-5.1"/>' },
-      whatsapp: { label: 'WhatsApp', href: 'https://wa.me/70000000000', hint: '+7 000 000-00-00', icon: '<path d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.3-4A8 8 0 1 1 20 11.7Z"/><path d="M9 8.5c.4 2 2.2 3.8 4.3 4.5l1.2-1 2 1-.4 1.6c-3.8 1.2-8.6-2.9-8.3-6.7L9.5 7l1 1.8L9 10"/>' },
-      max: { label: 'MAX', href: 'https://max.ru/', hint: 'Контакт в MAX', icon: '<path d="M5 5.5A2.5 2.5 0 0 1 7.5 3h9A2.5 2.5 0 0 1 19 5.5v8a2.5 2.5 0 0 1-2.5 2.5h-5L6 20v-4.5a2.5 2.5 0 0 1-1-2v-8Z"/><path d="M8 8h8M8 11h5"/>' }
+      telegram: { label: 'Telegram', href: 'https://t.me/Sergey_The_Mayerz', hint: '@Sergey_The_Mayerz', icon: '<path d="m21 3-7.2 18-4.1-7.1L3 10.2 21 3Z"/><path d="m9.7 13.9 5.1-5.1"/>' },
+      whatsapp: { label: 'WhatsApp', href: `https://wa.me/${whatsappDigits}`, hint: 'Открыть WhatsApp', icon: '<path d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.3-4A8 8 0 1 1 20 11.7Z"/><path d="M9 8.5c.4 2 2.2 3.8 4.3 4.5l1.2-1 2 1-.4 1.6c-3.8 1.2-8.6-2.9-8.3-6.7L9.5 7l1 1.8L9 10"/>' },
+      email: { label: 'Email', href: `mailto:${emailAddress}`, hint: emailAddress, icon: '<path d="M3 6.5 12 13l9-6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/>' }
     };
     const messengerMarkup = (key, item) => `<a class="messenger-link" data-messenger="${key}" href="${item.href}" target="_blank" rel="noopener noreferrer" aria-label="Открыть ${item.label}: ${item.hint}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${item.icon}</svg><span>${item.label}</span></a>`;
     document.querySelectorAll('.messenger-links').forEach((nav) => {
@@ -793,26 +796,35 @@
 
     document.getElementById('lead-form').addEventListener('submit', function (event) {
       event.preventDefault();
-
-      const contact = this.elements.contact.value.trim();
-      const method = this.elements.contactMethod.value;
-      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
-      const isPhone = (contact.match(/\d/g) || []).length >= 7;
-      const isTelegram = method === 'telegram' && /^@?[a-zA-Z0-9_]{5,32}$/.test(contact);
-
-      if (!(method === 'telegram' ? isTelegram : method === 'whatsapp' || method === 'max' ? isPhone : isEmail || isPhone)) {
-        const messages = { telegram: 'Введите Telegram username (например, @username).', whatsapp: 'Введите корректный номер WhatsApp.', max: 'Введите номер или контакт для MAX.', other: 'Введите корректный email или номер телефона.' };
-        this.elements.contact.setCustomValidity(messages[method]);
-        this.elements.contact.reportValidity();
+      const name = this.elements.name.value.trim();
+      const phone = this.elements.phone.value.trim();
+      const phoneDigits = phone.replace(/\D/g, '');
+      if (phoneDigits.length < 7) {
+        this.elements.phone.setCustomValidity('Введите корректный номер телефона.');
+        this.elements.phone.reportValidity();
         return;
       }
-
-      this.elements.contact.setCustomValidity('');
-      window.alert('Данные успешно отправлены! Генерируем демо-аудит для вашей ниши.');
-      this.reset();
+      this.elements.phone.setCustomValidity('');
+      const message = `Заявка с сайта\nИмя: ${name}\nТелефон: ${phone}`;
+      const encodedMessage = encodeURIComponent(message);
+      const choices = document.getElementById('submission-choices');
+      const status = document.getElementById('form-status');
+      const submissionLinks = {
+        telegram: { ...CONTACTS.telegram, href: `https://t.me/Sergey_The_Mayerz?text=${encodedMessage}` },
+        whatsapp: { ...CONTACTS.whatsapp, href: `${CONTACTS.whatsapp.href}?text=${encodedMessage}` },
+        email: { ...CONTACTS.email, href: `mailto:${emailAddress}?subject=${encodeURIComponent('Заявка с сайта')}&body=${encodedMessage}` }
+      };
+      choices.innerHTML = Object.entries(submissionLinks).map(([key, item]) => messengerMarkup(key, item)).join('');
+      choices.hidden = false;
+      status.textContent = 'Выберите способ передачи заявки. В мессенджере или почте останется подтвердить отправку.';
+      choices.querySelectorAll('a').forEach((link) => {
+        if (link.dataset.messenger === 'email') {
+          link.removeAttribute('target');
+        }
+      });
     });
 
-    document.querySelector('#lead-form [name="contact"]').addEventListener('input', function () {
+    document.querySelector('#lead-form [name="phone"]').addEventListener('input', function () {
       this.setCustomValidity('');
     });
 
