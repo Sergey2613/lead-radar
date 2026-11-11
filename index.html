@@ -322,13 +322,14 @@
       .about-founder-card { grid-template-columns: minmax(190px, .75fr) minmax(0, 1.25fr); gap: 26px; }
     }
     @media (max-width: 640px) {
-      .container { width: min(100% - 36px, var(--max)); }
+      .container { width: min(100% - 24px, var(--max)); }
       .site-header { min-height: 0; }
-      .nav { min-height: 0; flex-direction: column; align-items: stretch; gap: 6px; padding-top: 10px; padding-bottom: 8px; }
-      .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 2px; overflow: visible; }
-      .nav-links > a:not(.nav-cta) { min-height: 44px; padding-inline: 8px; font-size: 11px; white-space: nowrap; }
-      .nav-cta { min-height: 44px; margin-left: 0; padding: 0 9px; font-size: 11px; }
+      .nav { min-height: 60px; justify-content: flex-start; gap: 18px; padding-top: 8px; padding-bottom: 8px; }
+      .nav-links { flex: 1 1 auto; min-width: 0; justify-content: flex-start; flex-wrap: nowrap; gap: 0; overflow: visible; }
+      .nav-links > a:not(.nav-cta) { min-height: 44px; padding-inline: 3px; font-size: 10px; white-space: nowrap; }
+      .nav-cta { min-height: 44px; flex: 0 0 auto; margin-left: 2px; padding: 0 5px; font-size: 10px; }
       .brand { font-size: 14px; }
+      .brand { flex: 0 0 auto; }
       .brand-mark { width: 30px; height: 30px; }
       .hero { padding: 40px 0; }
       h1 { margin-top: 14px; font-size: clamp(39px, 11vw, 55px); }
@@ -379,6 +380,15 @@
       .contact-widget { right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
       .contact-toggle { width: 54px; height: 54px; }
       .contact-panel { bottom: 66px; padding: 16px; }
+    }
+    @media (max-width: 360px) {
+      .nav { gap: 16px; }
+      .brand { gap: 6px; font-size: 12px; }
+      .brand-mark { width: 25px; height: 25px; }
+      .brand-mark svg { width: 16px; height: 16px; }
+      .nav-links > a:not(.nav-cta) { padding-inline: 2px; font-size: 9px; }
+      .nav-cta { gap: 2px; padding-inline: 3px; font-size: 9px; }
+      .nav-cta span[aria-hidden="true"] { width: 14px; height: 14px; font-size: 11px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
