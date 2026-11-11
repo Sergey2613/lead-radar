@@ -221,6 +221,15 @@
     .case-step.result p { color: #d2ddc9; }
     .benchmark-note { margin: 19px 0 0; color: #778497; font-size: 10px; line-height: 1.55; text-align: center; }
     .capture { padding: 60px 0; }
+    .about-founder { padding: 60px 0; }
+    .about-founder-card { display: grid; grid-template-columns: minmax(220px, .72fr) minmax(0, 1.28fr); align-items: center; gap: clamp(28px, 5vw, 64px); max-width: 980px; margin-inline: auto; padding: clamp(22px, 4vw, 38px); overflow: hidden; border: 1px solid rgba(194,209,231,.12); border-radius: 22px; background: radial-gradient(ellipse at 0 0, rgba(166,243,107,.08), transparent 48%), linear-gradient(145deg, #121923, #0e131b); }
+    .about-founder-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(194,209,231,.13); border-radius: 16px; background: radial-gradient(ellipse at 50% 35%, rgba(139,184,255,.1), transparent 58%), #0b1017; }
+    .about-founder-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .about-founder-copy h2 { max-width: 580px; margin: 0 0 18px; font-size: clamp(28px, 3.5vw, 40px); }
+    .about-founder-copy > p { max-width: 620px; margin: 0 0 12px; color: #aeb9c8; font-size: 14px; line-height: 1.75; }
+    .about-founder-signature { display: grid; gap: 2px; margin-top: 24px; padding-left: 14px; border-left: 2px solid var(--accent); }
+    .about-founder-signature strong { color: #e8eef6; font: 700 14px "Manrope", sans-serif; }
+    .about-founder-signature span { color: var(--muted); font-size: 11px; }
     .capture-panel { display: grid; grid-template-columns: 1fr; gap: 25px; max-width: 860px; margin-inline: auto; padding: clamp(24px, 4vw, 42px); border: 1px solid rgba(166,243,107,.18); border-radius: 24px; background: radial-gradient(ellipse at 10% 0, rgba(166,243,107,.1), transparent 45%), linear-gradient(145deg, #131b25, #0e141d); box-shadow: 0 24px 70px rgba(0,0,0,.25); }
     .capture-copy h2 { max-width: 480px; margin: 10px 0; font-size: 37px; }
     .capture-copy > p { max-width: 430px; margin-bottom: 17px; color: var(--muted); font-size: 14px; }
@@ -303,6 +312,7 @@
       .float-card { right: -20px; }
       .capture-panel { gap: 34px; padding: 36px; }
       .capture-copy h2 { font-size: 32px; }
+      .about-founder-card { grid-template-columns: minmax(190px, .75fr) minmax(0, 1.25fr); gap: 26px; }
     }
     @media (max-width: 640px) {
       .container { width: min(100% - 36px, var(--max)); }
@@ -346,6 +356,11 @@
       .media-gallery { grid-template-columns: 1fr; gap: 14px; margin-top: 16px; }
       .media-caption { padding: 15px 16px 17px; }
       .capture { padding: 40px 0; }
+      .about-founder { padding: 40px 0; }
+      .about-founder-card { grid-template-columns: 1fr; gap: 22px; padding: 20px; }
+      .about-founder-photo { width: min(100%, 300px); aspect-ratio: 4 / 3; margin-inline: auto; }
+      .about-founder-copy h2 { font-size: 29px; }
+      .about-founder-copy > p { font-size: 13px; }
       .capture-panel { grid-template-columns: 1fr; gap: 22px; padding: 25px 19px; }
       .capture-copy h2 { font-size: 31px; }
       .capture-form { padding: 19px; }
@@ -372,6 +387,7 @@
         signal<span style="color:var(--accent)">.ai</span>
       </a>
       <div class="nav-links">
+        <a href="#about">О нас</a>
         <a href="#how">Как работает</a>
         <a href="#inside">Что внутри</a>
         <a href="#cases">Кейсы</a>
@@ -587,6 +603,25 @@
       </div>
     </section>
 
+    <section class="about-founder section-divider" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <article class="about-founder-card">
+          <div class="about-founder-photo">
+            <img src="assets/founder.jpeg" alt="Сергей Морозов, основатель Signal AI" loading="lazy">
+          </div>
+          <div class="about-founder-copy">
+            <div class="section-kicker">О нас</div>
+            <h2 id="about-title">Разработка и внедрение ИИ для вашего бизнеса</h2>
+            <p>Здравствуйте! Я Сергей Морозов, основатель проекта. Наша команда специализируется на создании и внедрении ИИ-инструментов для бизнеса уже более 3 лет. Мы реализуем проекты под ключ, гарантируя реальную эффективность и рост ключевых показателей ваших продаж.</p>
+            <div class="about-founder-signature">
+              <strong>Сергей Морозов</strong>
+              <span>Основатель и руководитель проекта</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="capture" id="get-audit" aria-labelledby="capture-title">
       <div class="container">
         <div class="capture-panel">
@@ -624,6 +659,7 @@
         <a href="#inside">Что внутри</a>
         <a href="#cases">Кейсы</a>
         <a href="#faq">Вопросы и ответы</a>
+        <a href="#about">О нас</a>
       </nav>
       <div class="footer-contact">
         <h2 class="footer-heading">Связаться с нами</h2>
