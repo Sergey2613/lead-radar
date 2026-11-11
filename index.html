@@ -91,6 +91,26 @@
     .avatar:nth-child(2) { background: #37455a; color: #d4e3ff; }
     .avatar:nth-child(3) { background: #56433d; color: #ffe0d3; }
     .proof-strong { color: #e3e9f1; font-weight: 600; }
+    .hero-proof { display: block; }
+    .proof-heading { display: block; margin-bottom: 11px; }
+    .testimonial-chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .testimonial-chip { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 7px; border: 1px solid var(--line); border-radius: 11px; color: var(--text); background: rgba(255,255,255,.025); text-align: left; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+    .testimonial-chip:hover, .testimonial-chip:focus-visible { transform: translateY(-2px); border-color: rgba(166,243,107,.42); background: rgba(166,243,107,.055); }
+    .testimonial-chip:focus-visible, .testimonial-dialog-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .testimonial-chip img { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: var(--panel-2); }
+    .testimonial-chip-copy { display: block; min-width: 0; }
+    .testimonial-chip-name { display: block; overflow: hidden; color: #e3e9f1; font-size: 10px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .testimonial-chip-role { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; line-height: 1.3; }
+    .testimonial-dialog { width: min(540px, calc(100% - 32px)); max-width: none; padding: 0; overflow: visible; border: 1px solid rgba(194,209,231,.16); border-radius: 20px; color: var(--text); background: #111821; box-shadow: 0 28px 100px rgba(0,0,0,.6); }
+    .testimonial-dialog::backdrop { background: rgba(3,6,10,.76); backdrop-filter: blur(5px); }
+    .testimonial-dialog-inner { position: relative; padding: clamp(24px, 5vw, 38px); }
+    .testimonial-dialog-close { position: absolute; top: 14px; right: 14px; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--text); background: rgba(255,255,255,.04); font-size: 20px; cursor: pointer; }
+    .testimonial-dialog-person { display: flex; align-items: center; gap: 14px; padding-right: 38px; }
+    .testimonial-dialog-person img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; }
+    .testimonial-dialog-person h2 { margin: 0 0 4px; font: 700 18px/1.3 "Manrope", sans-serif; }
+    .testimonial-dialog-person p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .testimonial-dialog blockquote { margin: 14px 0 0; color: #d2dae5; font-size: 15px; line-height: 1.75; }
+    @media (max-width: 520px) { .testimonial-chips { grid-template-columns: 1fr; } .testimonial-chip { padding: 8px 10px; } .testimonial-chip-role { font-size: 10px; } }
     h1, h2, h3, p { margin-top: 0; }
     h1 { max-width: 650px; margin: 16px 0 16px; font: 700 clamp(42px, 5.2vw, 66px)/1.08 "Manrope", sans-serif; letter-spacing: -.065em; }
     h1 span { color: var(--accent); }
@@ -385,8 +405,21 @@
               <span class="action-note">Бесплатный пример · без обязательств</span>
             </div>
             <div class="hero-proof">
-              <div class="avatar-stack" aria-hidden="true"><span class="avatar">АК</span><span class="avatar">МЛ</span><span class="avatar">ДВ</span></div>
-              <span><span class="proof-strong">Для руководителей B2B-компаний</span> · продажи и развитие</span>
+              <span class="proof-heading"><span class="proof-strong">Отзывы руководителей B2B-компаний</span> · продажи и развитие</span>
+              <div class="testimonial-chips" aria-label="Примеры отзывов руководителей">
+                <button class="testimonial-chip" type="button" data-review="andrey" aria-haspopup="dialog">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" loading="lazy" />
+                  <span class="testimonial-chip-copy"><span class="testimonial-chip-name">Андрей Волков</span><span class="testimonial-chip-role">Коммерческий директор · опт</span></span>
+                </button>
+                <button class="testimonial-chip" type="button" data-review="elena" aria-haspopup="dialog">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" loading="lazy" />
+                  <span class="testimonial-chip-copy"><span class="testimonial-chip-name">Елена Смирнова</span><span class="testimonial-chip-role">Директор по развитию · B2B-услуги</span></span>
+                </button>
+                <button class="testimonial-chip" type="button" data-review="mikhail" aria-haspopup="dialog">
+                  <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="" loading="lazy" />
+                  <span class="testimonial-chip-copy"><span class="testimonial-chip-name">Михаил Орлов</span><span class="testimonial-chip-role">РОП · дистрибуция</span></span>
+                </button>
+              </div>
             </div>
           </div>
         <div class="hero-visual" aria-label="Пример обзора B2B-рынка">
@@ -632,7 +665,47 @@
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-5.5A7.5 7.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
     </button>
   </aside>
+  <dialog class="testimonial-dialog" id="testimonial-dialog" aria-labelledby="testimonial-dialog-name">
+    <div class="testimonial-dialog-inner">
+      <button class="testimonial-dialog-close" type="button" aria-label="Закрыть отзыв">×</button>
+      <div class="testimonial-dialog-person">
+        <img id="testimonial-dialog-avatar" src="" alt="" />
+        <div><h2 id="testimonial-dialog-name"></h2><p id="testimonial-dialog-role"></p></div>
+      </div>
+      <blockquote id="testimonial-dialog-quote"></blockquote>
+    </div>
+  </dialog>
   <script>
+    // Демонстрационные персонажи и отзывы: замените на согласованные клиентские цитаты перед публикацией.
+    (() => {
+      const reviews = {
+        andrey: { name: 'Андрей Волков', role: 'Коммерческий директор · оптовая компания', avatar: 'https://randomuser.me/api/portraits/men/32.jpg', quote: 'Раньше команда тратила много времени на широкий поиск и первичную проверку компаний. Теперь получаем подборки по нужным отраслям и критериям, с контактами и контекстом для первого разговора. Менеджеры быстрее выходят на целевых клиентов, а доля содержательных встреч выросла.' },
+        elena: { name: 'Елена Смирнова', role: 'Директор по развитию бизнеса · B2B-услуги', avatar: 'https://randomuser.me/api/portraits/women/44.jpg', quote: 'Для нас особенно ценно точное попадание в профиль компании и лицо, принимающее решение. Лиды проходят предварительную проверку, поэтому команда меньше времени тратит на нецелевые контакты. Это помогло выстроить стабильный поток переговоров и увеличить число новых коммерческих возможностей.' },
+        mikhail: { name: 'Михаил Орлов', role: 'Руководитель отдела продаж · дистрибьюторская компания', avatar: 'https://randomuser.me/api/portraits/men/46.jpg', quote: 'Сервис помог системно находить компании, которым подходит наш ассортимент. В карточках достаточно данных, чтобы менеджер подготовился к контакту и начал разговор по делу. Выросла активность по целевым клиентам, а новые лиды стали чаще переходить в реальные сделки.' }
+      };
+      const dialog = document.getElementById('testimonial-dialog');
+      const dialogName = document.getElementById('testimonial-dialog-name');
+      const dialogRole = document.getElementById('testimonial-dialog-role');
+      const dialogAvatar = document.getElementById('testimonial-dialog-avatar');
+      const dialogQuote = document.getElementById('testimonial-dialog-quote');
+      let previousFocus;
+      document.querySelectorAll('[data-review]').forEach((button) => button.addEventListener('click', () => {
+        const review = reviews[button.dataset.review];
+        if (!review) return;
+        previousFocus = button;
+        dialogName.textContent = review.name;
+        dialogRole.textContent = review.role;
+        dialogAvatar.src = review.avatar;
+        dialogAvatar.alt = `Портрет: ${review.name}`;
+        dialogQuote.textContent = `«${review.quote}»`;
+        dialog.showModal();
+        dialog.querySelector('.testimonial-dialog-close').focus();
+      }));
+      dialog.querySelector('.testimonial-dialog-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', () => previousFocus?.focus());
+    })();
+
     // Отсчёт до ближайшей пятницы, 18:00 по локальному времени посетителя.
     (() => {
       const countdowns = document.querySelectorAll('[data-weekly-countdown]');
