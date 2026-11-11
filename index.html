@@ -201,13 +201,13 @@
     .case-step.result p { color: #d2ddc9; }
     .benchmark-note { margin: 19px 0 0; color: #778497; font-size: 10px; line-height: 1.55; text-align: center; }
     .capture { padding: 60px 0; }
-    .capture-panel { display: grid; grid-template-columns: 1fr .88fr; gap: 70px; align-items: center; padding: 47px; border: 1px solid rgba(166,243,107,.15); border-radius: 22px; background: radial-gradient(ellipse at 0 0, rgba(166,243,107,.07), transparent 54%), #10161f; }
+    .capture-panel { display: grid; grid-template-columns: 1fr; gap: 25px; max-width: 860px; margin-inline: auto; padding: clamp(24px, 4vw, 42px); border: 1px solid rgba(166,243,107,.18); border-radius: 24px; background: radial-gradient(ellipse at 10% 0, rgba(166,243,107,.1), transparent 45%), linear-gradient(145deg, #131b25, #0e141d); box-shadow: 0 24px 70px rgba(0,0,0,.25); }
     .capture-copy h2 { max-width: 480px; margin: 10px 0; font-size: 37px; }
     .capture-copy > p { max-width: 430px; margin-bottom: 17px; color: var(--muted); font-size: 14px; }
     .benefit-list { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; color: #c5cfdb; font-size: 12px; }
     .benefit-list li { display: flex; align-items: center; gap: 9px; }
     .check { display: grid; flex: 0 0 17px; width: 17px; height: 17px; place-items: center; border-radius: 50%; color: var(--accent); background: rgba(166,243,107,.12); font-size: 10px; }
-    .capture-form { padding: 24px; border: 1px solid rgba(194,209,231,.11); border-radius: 15px; background: rgba(8,12,18,.48); }
+    .capture-form { width: 100%; max-width: 620px; margin-inline: auto; padding: clamp(20px, 3.5vw, 30px); border: 1px solid rgba(194,209,231,.13); border-radius: 18px; background: rgba(8,12,18,.62); box-shadow: 0 16px 40px rgba(0,0,0,.2); }
     .form-title { margin-bottom: 4px; font: 700 16px "Manrope", sans-serif; }
     .form-hint { margin-bottom: 19px; color: #8996a8; font-size: 11px; }
     .form-capacity { margin: -10px 0 17px; color: #aeb9c8; font-size: 10px; line-height: 1.55; }
@@ -245,11 +245,34 @@
     .quick-question { display: flex; width: 100%; min-height: 40px; align-items: center; justify-content: center; border: 1px solid rgba(166,243,107,.25); border-radius: 10px; color: var(--accent); background: rgba(166,243,107,.07); font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s; }
     .quick-question:hover { background: rgba(166,243,107,.13); }
     .quick-question:disabled { opacity: .65; cursor: wait; }
-    .capture-form .button { width: 100%; min-height: 46px; margin-top: 4px; font-size: 12px; }
-    .form-legal { margin: 11px 0 0; color: #6f7c8e; font-size: 9px; line-height: 1.5; text-align: center; }
-    .site-footer { padding: 23px 0; border-top: 1px solid rgba(194,209,231,.07); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; color: #758296; font-size: 10px; }
-    .footer-brand { color: #b8c3d1; font-weight: 600; }
+    .capture-form .button { width: 100%; min-height: 52px; margin-top: 6px; border-radius: 11px; font-size: 14px; box-shadow: 0 8px 26px rgba(166,243,107,.2); }
+    .form-legal { margin: 12px 0 0; color: #8996a8; font-size: 10px; line-height: 1.55; text-align: center; }
+    .form-legal a, .footer-privacy { color: #b9c5d4; text-decoration: underline; text-decoration-color: rgba(185,197,212,.35); text-underline-offset: 3px; }
+    .site-footer { padding: 34px 0 24px; border-top: 1px solid rgba(194,209,231,.09); background: #0b0f16; }
+    .footer-inner { display: grid; grid-template-columns: 1.25fr 1fr 1fr; align-items: start; gap: 28px 42px; color: #8591a3; font-size: 11px; }
+    .footer-brand-block { display: grid; justify-items: start; gap: 9px; }
+    .footer-brand { color: #e1e8f1; font: 700 15px "Manrope", sans-serif; }
+    .footer-description { max-width: 250px; margin: 0; color: #758296; line-height: 1.6; }
+    .footer-heading { margin: 0 0 10px; color: #d5deea; font: 700 11px "Manrope", sans-serif; }
+    .footer-nav { display: grid; justify-items: start; gap: 7px; }
+    .footer-nav a { color: #8b98aa; transition: color .2s; }
+    .footer-nav a:hover, .footer-privacy:hover { color: var(--accent); }
+    .footer-contact { display: grid; justify-items: start; gap: 4px; }
+    .footer-contact .messenger-links { margin-top: 7px; }
+    .footer-bottom { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 17px; border-top: 1px solid rgba(194,209,231,.08); color: #687588; font-size: 10px; }
+    .footer-messengers .messenger-link { min-height: 31px; gap: 6px; padding-inline: 9px; border-radius: 8px; font-size: 10px; }
+    .footer-messengers .messenger-link svg { width: 14px; height: 14px; }
+    .privacy-modal { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(3,6,10,.76); backdrop-filter: blur(7px); }
+    .privacy-modal[hidden] { display: none; }
+    .privacy-dialog { position: relative; width: min(100%, 680px); max-height: min(82vh, 760px); overflow: auto; padding: clamp(24px, 5vw, 38px); border: 1px solid rgba(194,209,231,.16); border-radius: 20px; color: var(--text); background: linear-gradient(145deg, #151d28, #0e141d); box-shadow: 0 28px 90px rgba(0,0,0,.55); }
+    .privacy-dialog h2 { margin: 0 36px 16px 0; font-size: clamp(24px, 4vw, 32px); }
+    .privacy-dialog h3 { margin: 21px 0 7px; color: #e2eaf4; font: 700 14px "Manrope", sans-serif; }
+    .privacy-dialog p, .privacy-dialog li { color: #aab6c6; font-size: 13px; line-height: 1.7; }
+    .privacy-dialog p { margin-bottom: 10px; }
+    .privacy-dialog ul { margin: 0; padding-left: 20px; }
+    .privacy-close-icon { position: absolute; top: 17px; right: 17px; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 10px; color: #c5cfdb; background: rgba(255,255,255,.03); font-size: 20px; cursor: pointer; }
+    .privacy-close-icon:hover { color: var(--text); border-color: rgba(166,243,107,.4); }
+    .privacy-dialog .button { min-width: 130px; min-height: 44px; margin-top: 18px; }
     @media (max-width: 900px) {
       .hero { padding: 60px 0; }
       .hero-grid { gap: 28px; }
@@ -306,9 +329,12 @@
       .capture-panel { grid-template-columns: 1fr; gap: 22px; padding: 25px 19px; }
       .capture-copy h2 { font-size: 31px; }
       .capture-form { padding: 19px; }
-      .footer-inner { align-items: flex-start; gap: 8px; flex-direction: column; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px 18px; }
+      .footer-brand-block { grid-column: 1 / -1; }
+      .footer-contact { grid-column: 1 / -1; }
+      .footer-bottom { align-items: flex-start; flex-direction: column; gap: 9px; }
       .footer-messengers { flex-direction: row; margin: 2px 0; }
-      .footer-messengers .messenger-link { min-height: 34px; }
+      .footer-messengers .messenger-link { min-height: 32px; }
       .contact-widget { right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
       .contact-toggle { width: 54px; height: 54px; }
       .contact-panel { bottom: 66px; padding: 16px; }
@@ -530,22 +556,20 @@
 
     <section class="capture" id="get-audit" aria-labelledby="capture-title">
       <div class="container">
-        <div class="capture-panel" style="grid-template-columns:1fr">
+        <div class="capture-panel">
           <div class="capture-copy">
             <div class="section-kicker">Начните с бесплатного аудита</div>
             <h2 id="capture-title">Получить пример подборки компаний</h2>
             <p>Укажите отрасль и рабочий контакт — подготовим пример отчёта с сигналами и поводами для первого контакта.</p>
           </div>
           <form class="capture-form" id="lead-form">
-            <div class="form-title">Получить демо-отчёт</div>
-            <div class="form-hint">Укажите отрасль, чтобы увидеть пример исследования для вашего рынка</div>
             <p class="form-capacity">Не более 10 компаний в неделю — подготовим отчёт с источниками и поводами для контакта.</p>
             <label class="field"><span>Ваше имя</span><input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name" required></label>
             <label class="field"><span>Компания / отрасль</span><input type="text" name="company" placeholder="Например, сертификация или опт оборудования" autocomplete="organization" required></label>
             <label class="field"><span>Удобный способ связи</span><select name="contactMethod" aria-label="Выберите способ связи"><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="max">MAX</option><option value="other">Email или телефон</option></select></label>
             <label class="field"><span>Контакт для связи</span><input type="text" name="contact" placeholder="@username, номер или email" autocomplete="off" required></label>
             <button class="button" type="submit">Получить демо-отчёт <span aria-hidden="true">→</span></button>
-            <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+            <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных в соответствии с <a href="#privacy-policy-modal" data-privacy-modal>Политикой конфиденциальности</a>.</p>
             <nav class="messenger-links form-messengers" aria-label="Связаться через мессенджер"></nav>
           </form>
         </div>
@@ -555,8 +579,48 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner"><a class="footer-brand" href="#top">signal.ai</a><span>Исследование рынка для B2B-компаний</span><nav class="messenger-links footer-messengers" aria-label="Мессенджеры"></nav><span>© 2026 Signal AI</span></div>
+    <div class="container footer-inner">
+      <div class="footer-brand-block">
+        <a class="footer-brand" href="#top">signal.ai</a>
+        <p class="footer-description">Исследование рынка и поиск потенциальных клиентов для B2B-компаний.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Навигация в подвале">
+        <h2 class="footer-heading">Разделы сайта</h2>
+        <a href="#fit">Для кого</a>
+        <a href="#how">Как работает</a>
+        <a href="#inside">Что внутри</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#faq">Вопросы и ответы</a>
+      </nav>
+      <div class="footer-contact">
+        <h2 class="footer-heading">Связаться с нами</h2>
+        <span>Выберите удобный мессенджер</span>
+        <nav class="messenger-links footer-messengers" aria-label="Мессенджеры"></nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Signal AI</span>
+        <a class="footer-privacy" href="#privacy-policy-modal" data-privacy-modal>Политика конфиденциальности</a>
+      </div>
+    </div>
   </footer>
+  <div class="privacy-modal" id="privacy-policy-modal" hidden>
+    <section class="privacy-dialog" role="dialog" aria-modal="true" aria-labelledby="privacy-title" tabindex="-1">
+      <button class="privacy-close-icon" type="button" aria-label="Закрыть окно">×</button>
+      <div class="section-kicker">Signal AI · конфиденциальность</div>
+      <h2 id="privacy-title">Политика конфиденциальности</h2>
+      <p>Настоящая политика описывает, как Signal AI (далее — «Сервис») обрабатывает персональные данные посетителей сайта и представителей организаций, обращающихся за услугами исследования B2B-рынка.</p>
+      <h3>Какие данные мы получаем</h3>
+      <p>При отправке заявки мы можем получить имя, название компании или отрасль, выбранный способ связи и указанные контактные данные. Технические данные о посещении сайта могут собираться автоматически для его работы и защиты.</p>
+      <h3>Для чего используются данные</h3>
+      <p>Данные используются для ответа на обращение, подготовки и предоставления запрошенного демо-отчёта или предложения, связи по заявке, улучшения работы сайта и исполнения требований законодательства.</p>
+      <h3>Передача и хранение</h3>
+      <p>Мы не продаём персональные данные. Доступ к ним получают только лица и подрядчики, которым он необходим для обработки обращения и оказания услуг; данные могут быть переданы уполномоченным государственным органам в случаях, предусмотренных законом. Мы храним их только столько, сколько необходимо для указанных целей или требуется законодательством.</p>
+      <h3>Ваши права и обратная связь</h3>
+      <p>Вы можете запросить сведения об обработке, исправление или удаление своих данных, а также отозвать согласие, обратившись к оператору по контактам, указанным на сайте. После отзыва обработка прекращается, если у неё нет иного законного основания.</p>
+      <p>Отправляя форму, вы подтверждаете, что ознакомились с этой политикой. Актуальная редакция публикуется на сайте.</p>
+      <button class="button privacy-close-button" type="button">Закрыть</button>
+    </section>
+  </div>
   <aside class="contact-widget" id="contact-widget" aria-label="Быстрая связь">
     <div class="contact-panel" id="contact-panel" aria-labelledby="contact-panel-title" aria-hidden="true">
       <h2 id="contact-panel-title">Связаться с нами</h2>
@@ -671,6 +735,30 @@
       button.textContent = `Откроется ${CONTACTS[preferred].label}`;
       button.disabled = true;
       window.setTimeout(() => { button.textContent = 'Быстрый вопрос'; button.disabled = false; }, 1800);
+    });
+
+    const privacyModal = document.getElementById('privacy-policy-modal');
+    const privacyDialog = privacyModal.querySelector('.privacy-dialog');
+    const closePrivacyModal = () => {
+      privacyModal.hidden = true;
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('[data-privacy-modal]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        privacyModal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        privacyDialog.focus();
+      });
+    });
+    privacyModal.querySelectorAll('.privacy-close-icon, .privacy-close-button').forEach((button) => {
+      button.addEventListener('click', closePrivacyModal);
+    });
+    privacyModal.addEventListener('click', (event) => {
+      if (event.target === privacyModal) closePrivacyModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !privacyModal.hidden) closePrivacyModal();
     });
 
     const dashboardVideo = document.querySelector('#dashboard-video');
