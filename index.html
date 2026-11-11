@@ -97,7 +97,7 @@
     .hero-proof { display: block; }
     .proof-heading { display: block; margin-bottom: 11px; }
     .testimonial-chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-    .testimonial-chip { display: flex; min-width: 0; align-items: center; gap: 8px; padding: 7px; border: 1px solid var(--line); border-radius: 11px; color: var(--text); background: rgba(255,255,255,.025); text-align: left; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+    .testimonial-chip { display: flex; min-width: 0; min-height: 52px; align-items: center; gap: 8px; padding: 7px; border: 1px solid var(--line); border-radius: 11px; color: var(--text); background: rgba(255,255,255,.025); text-align: left; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
     .testimonial-chip:hover, .testimonial-chip:focus-visible { transform: translateY(-2px); border-color: rgba(166,243,107,.42); background: rgba(166,243,107,.055); }
     .testimonial-chip:focus-visible, .testimonial-dialog-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     .testimonial-chip img { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: var(--panel-2); }
@@ -107,8 +107,8 @@
     .testimonial-dialog { width: min(540px, calc(100% - 32px)); max-width: none; padding: 0; overflow: visible; border: 1px solid rgba(194,209,231,.16); border-radius: 20px; color: var(--text); background: #111821; box-shadow: 0 28px 100px rgba(0,0,0,.6); }
     .testimonial-dialog::backdrop { background: rgba(3,6,10,.76); backdrop-filter: blur(5px); }
     .testimonial-dialog-inner { position: relative; padding: clamp(24px, 5vw, 38px); }
-    .testimonial-dialog-close { position: absolute; top: 14px; right: 14px; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--text); background: rgba(255,255,255,.04); font-size: 20px; cursor: pointer; }
-    .testimonial-dialog-person { display: flex; align-items: center; gap: 14px; padding-right: 38px; }
+    .testimonial-dialog-close { position: absolute; top: 14px; right: 14px; display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--text); background: rgba(255,255,255,.04); font-size: 20px; cursor: pointer; }
+    .testimonial-dialog-person { display: flex; align-items: center; gap: 14px; padding-right: 48px; }
     .testimonial-dialog-person img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; }
     .testimonial-dialog-person h2 { margin: 0 0 4px; font: 700 18px/1.3 "Manrope", sans-serif; }
     .testimonial-dialog-person p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
@@ -245,14 +245,14 @@
     .form-capacity { margin: -10px 0 17px; color: #aeb9c8; font-size: 10px; line-height: 1.55; }
     .field { display: block; margin-bottom: 13px; }
     .field span { display: block; margin-bottom: 6px; color: #c5cfdb; font-size: 10px; font-weight: 600; }
-    .field input { width: 100%; height: 43px; padding: 0 12px; outline: none; border: 1px solid rgba(194,209,231,.13); border-radius: 9px; color: var(--text); background: #0d1219; font-size: 12px; transition: border-color .2s; }
+    .field input { width: 100%; height: 44px; padding: 0 12px; outline: none; border: 1px solid rgba(194,209,231,.13); border-radius: 9px; color: var(--text); background: #0d1219; font-size: 16px; transition: border-color .2s; }
     .field input::placeholder { color: #647184; }
     .field input:focus { border-color: rgba(166,243,107,.6); }
-    .field select { width: 100%; height: 43px; padding: 0 12px; outline: none; border: 1px solid rgba(194,209,231,.13); border-radius: 9px; color: var(--text); background: #0d1219; font-size: 12px; transition: border-color .2s; }
+    .field select { width: 100%; height: 44px; padding: 0 12px; outline: none; border: 1px solid rgba(194,209,231,.13); border-radius: 9px; color: var(--text); background: #0d1219; font-size: 16px; transition: border-color .2s; }
     .field select:focus { border-color: rgba(166,243,107,.6); }
     .messenger-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 15px; }
     .messenger-links[hidden] { display: none !important; }
-    .messenger-link { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 11px; border: 1px solid var(--line); border-radius: 10px; color: #c5cfdb; background: rgba(255,255,255,.025); font-size: 11px; transition: transform .2s, border-color .2s, background .2s, color .2s; }
+    .messenger-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 11px; border: 1px solid var(--line); border-radius: 10px; color: #c5cfdb; background: rgba(255,255,255,.025); font-size: 11px; transition: transform .2s, border-color .2s, background .2s, color .2s; }
     .messenger-link:hover { transform: translateY(-2px); border-color: rgba(166,243,107,.4); color: var(--text); background: rgba(166,243,107,.07); }
     .messenger-link svg { width: 16px; height: 16px; }
     .messenger-link[data-messenger="telegram"] { color: #55a9e8; }
@@ -264,7 +264,7 @@
     .form-messengers { justify-content: center; }
     .footer-inner { flex-wrap: wrap; }
     .footer-messengers { margin: 0; }
-    .footer-messengers .messenger-link { min-height: 33px; padding-inline: 9px; }
+    .footer-messengers .messenger-link { min-height: 44px; padding-inline: 9px; }
     .contact-widget { position: fixed; z-index: 20; right: max(22px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); }
     .contact-toggle { display: grid; width: 58px; height: 58px; place-items: center; border: 0; border-radius: 50%; color: var(--accent-dark); background: var(--accent); box-shadow: 0 10px 35px rgba(0,0,0,.42), 0 0 0 7px rgba(166,243,107,.09); cursor: pointer; transition: transform .2s, box-shadow .2s; }
     .contact-toggle:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 40px rgba(0,0,0,.5), 0 0 0 9px rgba(166,243,107,.12); }
@@ -275,12 +275,13 @@
     .contact-panel p { margin: 0; color: var(--muted); font-size: 12px; }
     .contact-panel .messenger-links { display: grid; grid-template-columns: 1fr; margin: 13px 0; }
     .contact-panel .messenger-link { min-height: 40px; }
-    .quick-question { display: flex; width: 100%; min-height: 40px; align-items: center; justify-content: center; border: 1px solid rgba(166,243,107,.25); border-radius: 10px; color: var(--accent); background: rgba(166,243,107,.07); font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s; }
+    .quick-question { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(166,243,107,.25); border-radius: 10px; color: var(--accent); background: rgba(166,243,107,.07); font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s; }
     .quick-question:hover { background: rgba(166,243,107,.13); }
     .quick-question:disabled { opacity: .65; cursor: wait; }
     .capture-form .button { width: 100%; min-height: 52px; margin-top: 6px; border-radius: 11px; font-size: 14px; box-shadow: 0 8px 26px rgba(166,243,107,.2); }
     .form-legal { margin: 12px 0 0; color: #8996a8; font-size: 10px; line-height: 1.55; text-align: center; }
     .form-legal a, .footer-privacy { color: #b9c5d4; text-decoration: underline; text-decoration-color: rgba(185,197,212,.35); text-underline-offset: 3px; }
+    .form-legal a { display: inline-block; padding-block: 6px; }
     .site-footer { padding: 34px 0 24px; border-top: 1px solid rgba(194,209,231,.09); background: #0b0f16; }
     .footer-inner { display: grid; grid-template-columns: 1.25fr 1fr 1fr; align-items: start; gap: 28px 42px; color: #8591a3; font-size: 11px; }
     .footer-brand-block { display: grid; justify-items: start; gap: 9px; }
@@ -288,12 +289,12 @@
     .footer-description { max-width: 250px; margin: 0; color: #758296; line-height: 1.6; }
     .footer-heading { margin: 0 0 10px; color: #d5deea; font: 700 11px "Manrope", sans-serif; }
     .footer-nav { display: grid; justify-items: start; gap: 7px; }
-    .footer-nav a { color: #8b98aa; transition: color .2s; }
+    .footer-nav a { display: flex; min-height: 44px; align-items: center; color: #8b98aa; transition: color .2s; }
     .footer-nav a:hover, .footer-privacy:hover { color: var(--accent); }
     .footer-contact { display: grid; justify-items: start; gap: 4px; }
     .footer-contact .messenger-links { margin-top: 7px; }
     .footer-bottom { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 17px; border-top: 1px solid rgba(194,209,231,.08); color: #687588; font-size: 10px; }
-    .footer-messengers .messenger-link { min-height: 31px; gap: 6px; padding-inline: 9px; border-radius: 8px; font-size: 10px; }
+    .footer-messengers .messenger-link { min-height: 44px; gap: 6px; padding-inline: 9px; border-radius: 8px; font-size: 10px; }
     .footer-messengers .messenger-link svg { width: 14px; height: 14px; }
     .privacy-modal { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(3,6,10,.76); backdrop-filter: blur(7px); }
     .privacy-modal[hidden] { display: none; }
@@ -303,7 +304,7 @@
     .privacy-dialog p, .privacy-dialog li { color: #aab6c6; font-size: 13px; line-height: 1.7; }
     .privacy-dialog p { margin-bottom: 10px; }
     .privacy-dialog ul { margin: 0; padding-left: 20px; }
-    .privacy-close-icon { position: absolute; top: 17px; right: 17px; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 10px; color: #c5cfdb; background: rgba(255,255,255,.03); font-size: 20px; cursor: pointer; }
+    .privacy-close-icon { position: absolute; top: 17px; right: 17px; display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid var(--line); border-radius: 10px; color: #c5cfdb; background: rgba(255,255,255,.03); font-size: 20px; cursor: pointer; }
     .privacy-close-icon:hover { color: var(--text); border-color: rgba(166,243,107,.4); }
     .privacy-dialog .button { min-width: 130px; min-height: 44px; margin-top: 18px; }
     @media (max-width: 900px) {
@@ -324,8 +325,8 @@
       .nav { min-height: 0; flex-direction: column; align-items: stretch; gap: 6px; padding-top: 10px; padding-bottom: 8px; }
       .nav-links { width: 100%; gap: 3px; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: none; }
       .nav-links::-webkit-scrollbar { display: none; }
-      .nav-links > a:not(.nav-cta) { min-height: 36px; padding-inline: 10px; font-size: 11px; white-space: nowrap; }
-      .nav-cta { min-height: 36px; margin-left: 2px; padding: 0 10px; font-size: 11px; }
+      .nav-links > a:not(.nav-cta) { min-height: 44px; padding-inline: 10px; font-size: 11px; white-space: nowrap; }
+      .nav-cta { min-height: 44px; margin-left: 2px; padding: 0 10px; font-size: 11px; }
       .brand { font-size: 14px; }
       .brand-mark { width: 30px; height: 30px; }
       .hero { padding: 40px 0; }
@@ -406,7 +407,7 @@
       <div class="container hero-grid">
         <div class="hero-heading">
           <h1 style="font-size: clamp(28px, 3.5vw, 42px); line-height: 1.2;">
-            <span style="color: #ffffff; white-space: nowrap;">Найдите потенциальных B2B-клиентов для</span><br>
+            <span style="color: #ffffff;">Найдите потенциальных B2B-клиентов для</span><br>
             <span style="color: var(--accent);">производства, поставок и сложных услуг</span>
           </h1>
         </div>
@@ -851,8 +852,7 @@
       const message = encodeURIComponent('Здравствуйте! У меня есть вопрос об исследовании B2B-рынка.');
       const links = {
         telegram: `${CONTACTS.telegram.href}?text=${message}`,
-        whatsapp: `${CONTACTS.whatsapp.href}?text=${message}`,
-        max: CONTACTS.max.href
+        whatsapp: `${CONTACTS.whatsapp.href}?text=${message}`
       };
       const preferred = window.matchMedia('(max-width: 640px)').matches ? 'whatsapp' : 'telegram';
       window.open(links[preferred], '_blank', 'noopener,noreferrer');
