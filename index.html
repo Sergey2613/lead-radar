@@ -738,6 +738,7 @@
         <div class="quiz-messenger-actions">
           <a class="button quiz-messenger-link" id="quiz-telegram-link" href="https://t.me/Sergey_The_Mayerz" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
           <a class="button quiz-messenger-link" id="quiz-whatsapp-link" href="https://wa.me/79682613233" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
+          <a class="button quiz-messenger-link" id="quiz-email-link" href="mailto:moro7z@yandex.ru">Отправить на почту</a>
         </div>
       </section>
     </div>
@@ -963,6 +964,12 @@
       const encodedMessage = encodeURIComponent(message);
       document.getElementById('quiz-telegram-link').href = `https://t.me/Sergey_The_Mayerz?text=${encodedMessage}`;
       document.getElementById('quiz-whatsapp-link').href = `https://wa.me/79682613233?text=${encodedMessage}`;
+      const emailBody = [
+        `Сфера: ${quizAnswers.industry}`,
+        `Масштаб команды: ${quizAnswers.employees}`,
+        `Должность: ${String(data.get('position')).trim()}`
+      ].join('\n');
+      document.getElementById('quiz-email-link').href = `mailto:moro7z@yandex.ru?subject=${encodeURIComponent('Заявка на подборку B2B-клиентов с Lead Radar')}&body=${encodeURIComponent(emailBody)}`;
       quizSteps.forEach((section) => { section.hidden = true; });
       document.getElementById('quiz-progress').hidden = true;
       document.getElementById('quiz-thanks').hidden = false;
