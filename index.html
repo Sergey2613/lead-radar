@@ -754,7 +754,7 @@
         <form id="quiz-form" novalidate>
           <div class="quiz-fields">
             <label class="field"><span>Должность</span><input name="position" autocomplete="organization-title" placeholder="Например, собственник" required></label>
-            <label class="field"><span>Телефон или Telegram</span><input name="contact" autocomplete="tel" placeholder="+7 900 000-00-00 или @username" required></label>
+            <label class="field"><span>Телефон или Telegram</span><input name="contact" autocomplete="tel" placeholder="+7 900 000-00-00 или @username" aria-describedby="quiz-error" required></label>
             <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="name@company.ru" required></label>
           </div>
           <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных в соответствии с <a href="#privacy-policy-modal" data-privacy-modal>Политикой конфиденциальности</a>.</p>
@@ -1035,42 +1035,91 @@
     quizDialog.querySelectorAll('[data-quiz-back]').forEach((button) => {
       button.addEventListener('click', () => showQuizStep(Math.max(1, quizStep - 1)));
     });
-    quizForm.addEventListener('submit', (event) => {
+    const isValidPhoneOrTelegram = (value) => {
+      const contact = value.trim();
+      const phone = /^\+?[0-9().\s-]+$/.test(contact) && (contact.match(/\d/g) || []).length >= 7 && (contact.match(/\d/g) || []).length <= 15;
+      const telegram = /^@?[A-Za-z][A-Za-z0-9_]{3,30}[A-Za-z0-9]$/.test(contact);
+      return phone || telegram;
+    };
+    const contactInput = quizForm.elements.contact;
+    const positionInput = quizForm.elements.position;
+    contactInput.addEventListener('input', () => {
+      contactInput.setCustomValidity('');
+      document.getElementById('quiz-error').textContent = '';
+    });
+    positionInput.addEventListener('input', () => positionInput.setCustomValidity(''));
+    const quizSubmitButton = quizForm.querySelector('[type="submit"]');
+    const quizError = document.getElementById('quiz-error');
+    let quizIsSending = false;
+    quizForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (quizIsSending) return;
+      contactInput.setCustomValidity('');
       if (!quizForm.reportValidity()) return;
       const data = new FormData(quizForm);
       const contact = String(data.get('contact')).trim();
-      if (contact.replace(/\D/g, '').length < 7 && !/^@?[a-zA-Z][a-zA-Z0-9_]{4,}$/.test(contact)) {
-        quizForm.elements.contact.setCustomValidity('Укажите телефон или корректный Telegram username.');
-        quizForm.elements.contact.reportValidity();
+      if (!isValidPhoneOrTelegram(contact)) {
+        contactInput.setCustomValidity('Введите телефон с 7–15 цифрами или Telegram username длиной 5–32 символа.');
+        contactInput.reportValidity();
         return;
       }
-      quizForm.elements.contact.setCustomValidity('');
-      const message = [
-        'Здравствуйте! Хочу получить подборку B2B-клиентов.',
-        '',
-        `Сфера: ${quizAnswers.industry}`,
-        `Масштаб команды: ${quizAnswers.employees}`,
-        `Должность: ${String(data.get('position')).trim()}`,
-        `Телефон или Telegram: ${contact}`,
-        `Email: ${String(data.get('email')).trim()}`
-      ].join('\n');
-      const encodedMessage = encodeURIComponent(message);
-      document.getElementById('quiz-telegram-link').href = `https://t.me/Sergey_The_Mayerz?text=${encodedMessage}`;
-      document.getElementById('quiz-whatsapp-link').href = `https://wa.me/79682613233?text=${encodedMessage}`;
-      const emailBody = [
-        `Сфера: ${quizAnswers.industry}`,
-        `Масштаб команды: ${quizAnswers.employees}`,
-        `Должность: ${String(data.get('position')).trim()}`
-      ].join('\n');
-      document.getElementById('quiz-email-link').href = `mailto:moro7z@yandex.ru?subject=${encodeURIComponent('Заявка на подборку B2B-клиентов с Lead Radar')}&body=${encodeURIComponent(emailBody)}`;
-      quizSteps.forEach((section) => { section.hidden = true; });
-      document.getElementById('quiz-progress').hidden = true;
-      document.getElementById('quiz-thanks').hidden = false;
-      document.getElementById('quiz-thanks').focus();
-      reachGoal('quiz_complete');
-      closeQuiz();
-      showSuccessModal();
+      const position = String(data.get('position')).trim();
+      if (!position) {
+        quizForm.elements.position.setCustomValidity('Укажите вашу должность.');
+        quizForm.elements.position.reportValidity();
+        return;
+      }
+      quizForm.elements.position.setCustomValidity('');
+      quizIsSending = true;
+      quizSubmitButton.disabled = true;
+      quizSubmitButton.textContent = 'Отправляем…';
+      quizError.textContent = '';
+      const submission = {
+        _subject: 'Новая заявка на подборку B2B-клиентов — Signal AI',
+        _template: 'table',
+        _replyto: String(data.get('email')).trim(),
+        name: position,
+        email: String(data.get('email')).trim(),
+        contact,
+        industry: quizAnswers.industry,
+        employees: quizAnswers.employees,
+        message: [
+          'Новая заявка на подборку B2B-клиентов.',
+          `Сфера: ${quizAnswers.industry}`,
+          `Масштаб команды: ${quizAnswers.employees}`,
+          `Должность: ${position}`,
+          `Телефон или Telegram: ${contact}`,
+          `Email: ${String(data.get('email')).trim()}`
+        ].join('\n')
+      };
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/moro7z@yandex.ru', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(submission)
+        });
+        const result = await response.json();
+        if (!response.ok || result.success !== true && result.success !== 'true') {
+          throw new Error(result.message || 'Сервис не подтвердил получение заявки.');
+        }
+        reachGoal('quiz_complete');
+        quizAnswers.industry = '';
+        quizAnswers.employees = '';
+        quizForm.reset();
+        contactInput.setCustomValidity('');
+        quizSteps.forEach((section) => { section.hidden = false; });
+        document.getElementById('quiz-thanks').hidden = true;
+        document.getElementById('quiz-progress').hidden = false;
+        showQuizStep(1);
+        closeQuiz();
+        showSuccessModal();
+      } catch (error) {
+        quizError.textContent = 'Не удалось отправить заявку. Проверьте подключение и попробуйте ещё раз. Введённые данные сохранены.';
+      } finally {
+        quizIsSending = false;
+        quizSubmitButton.disabled = false;
+        quizSubmitButton.innerHTML = 'Получить подборку <span aria-hidden="true">→</span>';
+      }
     });
 
     const contactWidget = document.getElementById('contact-widget');
