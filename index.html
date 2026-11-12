@@ -345,6 +345,14 @@
     .footer-messengers .messenger-link svg { width: 14px; height: 14px; }
     .privacy-modal { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(3,6,10,.76); backdrop-filter: blur(7px); }
     .privacy-modal[hidden] { display: none; }
+    .success-modal { position: fixed; z-index: 110; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(3,6,10,.76); opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease; }
+    .success-modal.is-open { opacity: 1; visibility: visible; }
+    .success-modal[hidden] { display: none; }
+    .success-modal-card { width: min(400px, 100%); padding: 30px; border: 1px solid rgba(194,209,231,.14); border-radius: 20px; color: #182018; background: #fff; box-shadow: 0 28px 90px rgba(0,0,0,.45); text-align: center; transform: translateY(10px) scale(.98); transition: transform .25s ease; }
+    .success-modal.is-open .success-modal-card { transform: none; }
+    .success-modal-card h2 { margin: 0 0 10px; font: 700 24px/1.2 "Manrope", sans-serif; }
+    .success-modal-card p { margin: 0 0 22px; color: #586258; font-size: 14px; line-height: 1.6; }
+    .success-modal-card .button { min-width: 140px; }
     .privacy-dialog { position: relative; width: min(100%, 680px); max-height: min(82vh, 760px); overflow: auto; padding: clamp(24px, 5vw, 38px); border: 1px solid rgba(194,209,231,.16); border-radius: 20px; color: var(--text); background: linear-gradient(145deg, #151d28, #0e141d); box-shadow: 0 28px 90px rgba(0,0,0,.55); }
     .privacy-dialog h2 { margin: 0 36px 16px 0; font-size: clamp(24px, 4vw, 32px); }
     .privacy-dialog h3 { margin: 21px 0 7px; color: #e2eaf4; font: 700 14px "Manrope", sans-serif; }
@@ -819,6 +827,13 @@
       <button class="button privacy-close-button" type="button">Закрыть</button>
     </section>
   </div>
+  <div class="success-modal" id="success-modal" hidden>
+    <section class="success-modal-card" role="dialog" aria-modal="true" aria-labelledby="success-modal-title" aria-describedby="success-modal-message" tabindex="-1">
+      <h2 id="success-modal-title">Спасибо за заявку!</h2>
+      <p id="success-modal-message">Ваша заявка принята. Мы свяжемся с вами в течение 10 минут для уточнения деталей и подготовки тестовой подборки</p>
+      <button class="button" id="success-modal-close" type="button">Понятно</button>
+    </section>
+  </div>
   <aside class="contact-widget" id="contact-widget" aria-label="Быстрая связь">
     <div class="contact-panel" id="contact-panel" aria-labelledby="contact-panel-title" aria-hidden="true">
       <h2 id="contact-panel-title">Связаться с нами</h2>
@@ -939,6 +954,35 @@
       });
     });
 
+    const successModal = document.getElementById('success-modal');
+    const successModalCard = successModal.querySelector('.success-modal-card');
+    const successModalClose = document.getElementById('success-modal-close');
+    let successModalPreviousFocus = null;
+    const showSuccessModal = () => {
+      successModalPreviousFocus = document.activeElement;
+      successModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        successModal.classList.add('is-open');
+        successModalCard.focus();
+      });
+    };
+    const closeSuccessModal = () => {
+      successModal.classList.remove('is-open');
+      window.setTimeout(() => {
+        successModal.hidden = true;
+        document.body.style.overflow = '';
+        if (successModalPreviousFocus?.isConnected) successModalPreviousFocus.focus();
+      }, 250);
+    };
+    successModalClose.addEventListener('click', closeSuccessModal);
+    successModal.addEventListener('click', (event) => {
+      if (event.target === successModal) closeSuccessModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !successModal.hidden) closeSuccessModal();
+    });
+
     const quizDialog = document.getElementById('lead-quiz');
     const quizForm = document.getElementById('quiz-form');
     const quizAnswers = { industry: '', employees: '' };
@@ -1025,6 +1069,8 @@
       document.getElementById('quiz-thanks').hidden = false;
       document.getElementById('quiz-thanks').focus();
       reachGoal('quiz_complete');
+      closeQuiz();
+      showSuccessModal();
     });
 
     const contactWidget = document.getElementById('contact-widget');
