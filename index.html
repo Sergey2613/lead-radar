@@ -765,8 +765,8 @@
       </section>
       <section class="quiz-thanks" id="quiz-thanks" hidden>
         <span class="quiz-check" aria-hidden="true">✓</span>
-        <h2>Анкета готова</h2>
-        <p>Выберите удобный мессенджер — текст анкеты уже будет подставлен в сообщение.</p>
+        <h2 id="quiz-fallback-title">Не удалось отправить заявку автоматически</h2>
+        <p id="quiz-fallback-message">Данные сохранены в этом браузере. Отправьте заявку удобным способом — текст уже подготовлен.</p>
         <div class="quiz-messenger-actions">
           <a class="button quiz-messenger-link" id="quiz-telegram-link" href="https://t.me/Sergey_The_Mayerz" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
           <a class="button quiz-messenger-link" id="quiz-whatsapp-link" href="https://wa.me/79682613233" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
@@ -1009,7 +1009,21 @@
       document.getElementById('quiz-error').textContent = '';
       quizDialog.showModal();
       document.body.style.overflow = 'hidden';
-      showQuizStep(1);
+      let restored = false;
+      try {
+        const pending = JSON.parse(localStorage.getItem('lead-radar-pending-submission') || 'null');
+        if (pending?.submission) {
+          quizAnswers.industry = pending.submission.industry || '';
+          quizAnswers.employees = pending.submission.employees || '';
+          quizForm.elements.position.value = pending.submission.name || '';
+          quizForm.elements.contact.value = pending.submission.contact || '';
+          quizForm.elements.email.value = pending.submission.email || '';
+          restored = true;
+        }
+      } catch (error) {
+        // Storage may be unavailable; the in-memory form still retains the current attempt.
+      }
+      showQuizStep(restored ? 3 : 1);
       reachGoal('quiz_start');
     };
     const closeQuiz = () => {
@@ -1077,6 +1091,7 @@
       const submission = {
         _subject: 'Новая заявка на подборку B2B-клиентов — Signal AI',
         _template: 'table',
+        _url: 'https://lead-radar.site/',
         _replyto: String(data.get('email')).trim(),
         name: position,
         email: String(data.get('email')).trim(),
@@ -1102,6 +1117,7 @@
         if (!response.ok || result.success !== true && result.success !== 'true') {
           throw new Error(result.message || 'Сервис не подтвердил получение заявки.');
         }
+        try { localStorage.removeItem('lead-radar-pending-submission'); } catch (error) { /* Storage is optional after delivery. */ }
         reachGoal('quiz_complete');
         quizAnswers.industry = '';
         quizAnswers.employees = '';
@@ -1114,7 +1130,23 @@
         closeQuiz();
         showSuccessModal();
       } catch (error) {
-        quizError.textContent = 'Не удалось отправить заявку. Проверьте подключение и попробуйте ещё раз. Введённые данные сохранены.';
+        let stored = false;
+        try {
+          localStorage.setItem('lead-radar-pending-submission', JSON.stringify({ savedAt: new Date().toISOString(), submission }));
+          stored = true;
+        } catch (storageError) {
+          // Keep the current inputs available even if browser storage is blocked or full.
+        }
+        const encodedMessage = encodeURIComponent(submission.message);
+        document.getElementById('quiz-telegram-link').href = `https://t.me/Sergey_The_Mayerz?text=${encodedMessage}`;
+        document.getElementById('quiz-whatsapp-link').href = `https://wa.me/79682613233?text=${encodedMessage}`;
+        document.getElementById('quiz-email-link').href = `mailto:moro7z@yandex.ru?subject=${encodeURIComponent(submission._subject)}&body=${encodedMessage}`;
+        document.getElementById('quiz-fallback-message').textContent = stored
+          ? 'Мы сохранили заявку в этом браузере. Отправьте её удобным способом — текст уже подготовлен.'
+          : 'Не удалось сохранить заявку после ошибки сети. Заполненные поля остались на экране; отправьте её удобным способом.';
+        quizError.textContent = 'Сетевая отправка не удалась. Используйте резервные способы связи ниже.';
+        document.getElementById('quiz-thanks').hidden = false;
+        document.getElementById('quiz-thanks').focus();
       } finally {
         quizIsSending = false;
         quizSubmitButton.disabled = false;
