@@ -318,7 +318,7 @@
     .form-legal a, .footer-privacy { color: #b9c5d4; text-decoration: underline; text-decoration-color: rgba(185,197,212,.35); text-underline-offset: 3px; }
     .form-legal a { display: inline-block; padding-block: 6px; }
     .site-footer { padding: 34px 0 24px; border-top: 1px solid rgba(194,209,231,.09); background: #0b0f16; }
-    .footer-inner { display: grid; grid-template-columns: 1.1fr .8fr 1.1fr; align-items: start; gap: 28px 32px; color: #8591a3; font-size: 11px; }
+    .footer-inner { display: grid; grid-template-columns: 1.15fr .75fr 1.4fr; align-items: start; gap: 28px 32px; color: #8591a3; font-size: 11px; }
     .footer-brand-block { display: grid; justify-items: start; gap: 9px; }
     .footer-brand { color: #e1e8f1; font: 700 15px "Manrope", sans-serif; }
     .footer-description { max-width: 250px; margin: 0; color: #758296; line-height: 1.6; }
@@ -326,14 +326,16 @@
     .footer-nav { display: grid; justify-items: start; gap: 7px; }
     .footer-nav a { display: flex; min-height: 44px; align-items: center; color: #8b98aa; transition: color .2s; }
     .footer-nav a:hover, .footer-privacy:hover { color: var(--accent); }
-    .footer-contact { display: grid; justify-items: start; gap: 7px; }
+    .footer-contact { display: grid; justify-items: start; gap: 7px; margin-top: 12px; }
+    .footer-contact .footer-heading { margin-bottom: 0; }
     .footer-phone { color: #dce5f0; font-size: 14px; font-weight: 700; }
     .footer-phone:hover { color: var(--accent); }
     .footer-call { display: inline-flex; min-height: 40px; align-items: center; gap: 8px; margin-top: 2px; padding: 0 13px; border: 1px solid rgba(166,243,107,.32); border-radius: 9px; color: var(--accent); background: rgba(166,243,107,.08); font-size: 12px; font-weight: 700; transition: background .2s, border-color .2s; }
     .footer-call:hover, .footer-call:focus-visible { border-color: var(--accent); background: rgba(166,243,107,.15); }
     .footer-call svg { width: 16px; height: 16px; }
-    .footer-contact .messenger-links { margin-top: 2px; }
-    .footer-map { display: block; width: 100%; height: 160px; margin-top: 8px; border: 1px solid rgba(194,209,231,.12); border-radius: 10px; background: #141b26; }
+    .footer-messengers { margin-top: 2px; }
+    .footer-map-block { display: grid; align-content: start; gap: 8px; }
+    .footer-map { display: block; width: 100%; height: 240px; border: 1px solid rgba(194,209,231,.12); border-radius: 10px; background: #141b26; }
     .footer-map-caption { margin: 0; color: #9aa7b9; font-size: 10px; line-height: 1.5; }
     .footer-legal { margin: 0; color: #9aa7b9; }
     .footer-bottom { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 17px; border-top: 1px solid rgba(194,209,231,.08); color: #687588; font-size: 10px; }
@@ -414,8 +416,7 @@
       .capture-copy h2 { font-size: 31px; }
       .capture-form { padding: 19px; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px 18px; }
-      .footer-brand-block { grid-column: 1 / -1; }
-      .footer-contact { grid-column: 1 / -1; }
+      .footer-map-block { grid-column: 1 / -1; }
       .footer-bottom { align-items: flex-start; flex-direction: column; gap: 9px; }
       .footer-messengers { flex-direction: row; margin: 2px 0; }
       .footer-messengers .messenger-link { min-height: 32px; }
@@ -754,10 +755,17 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand-block">
+      <div class="footer-brand-block" id="contacts">
         <a class="footer-brand" href="#top">signal.ai</a>
         <p class="footer-description">Исследование рынка и поиск потенциальных клиентов для B2B-компаний.</p>
         <p class="footer-legal">Морозов С.В. | ИНН: 260705260160</p>
+        <section class="footer-contact" aria-labelledby="footer-contact-heading">
+          <h2 class="footer-heading" id="footer-contact-heading">Связаться с нами</h2>
+          <a class="footer-phone" href="tel:+79682613233">+7 (968) 261-32-33</a>
+          <a class="footer-call" href="tel:+79682613233" aria-label="Позвонить по номеру +7 (968) 261-32-33"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.58 2.8.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить</a>
+          <span>Или напишите в мессенджер</span>
+          <nav class="messenger-links footer-messengers" aria-label="Мессенджеры"></nav>
+        </section>
       </div>
       <nav class="footer-nav" aria-label="Навигация в подвале">
         <h2 class="footer-heading">Разделы сайта</h2>
@@ -768,12 +776,7 @@
         <a href="#faq">Вопросы и ответы</a>
         <a href="#about">О нас</a>
       </nav>
-      <div class="footer-contact" id="contacts">
-        <h2 class="footer-heading">Связаться с нами</h2>
-        <a class="footer-phone" href="tel:+79682613233">+7 (968) 261-32-33</a>
-        <a class="footer-call" href="tel:+79682613233" aria-label="Позвонить по номеру +7 (968) 261-32-33"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.35 1.84.58 2.8.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить</a>
-        <span>Или напишите в мессенджер</span>
-        <nav class="messenger-links footer-messengers" aria-label="Мессенджеры"></nav>
+      <div class="footer-map-block" aria-label="Карта офиса">
         <iframe class="footer-map" title="Яндекс.Карта Экспофорума в Санкт-Петербурге" src="https://yandex.ru/map-widget/v1/?ll=30.357460%2C59.763510&z=15&lang=ru_RU" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <p class="footer-map-caption">Наш офис: Санкт-Петербург, Пулковские высоты (Экспофорум)</p>
       </div>
