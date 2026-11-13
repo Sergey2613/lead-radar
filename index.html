@@ -280,9 +280,6 @@
     .contact-panel p { margin: 0; color: var(--muted); font-size: 12px; }
     .contact-panel .messenger-links { display: grid; grid-template-columns: 1fr; margin: 13px 0; }
     .contact-panel .messenger-link { min-height: 40px; }
-    .quick-question { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(166,243,107,.25); border-radius: 10px; color: var(--accent); background: rgba(166,243,107,.07); font-size: 12px; font-weight: 700; cursor: pointer; transition: background .2s; }
-    .quick-question:hover { background: rgba(166,243,107,.13); }
-    .quick-question:disabled { opacity: .65; cursor: wait; }
     .capture-form .button { width: 100%; min-height: 52px; margin-top: 6px; border-radius: 11px; font-size: 14px; box-shadow: 0 8px 26px rgba(166,243,107,.2); }
     .quiz-dialog { width: min(560px, calc(100% - 28px)); max-width: none; max-height: min(90vh, 760px); padding: 0; overflow: auto; border: 1px solid rgba(194,209,231,.16); border-radius: 22px; color: var(--text); background: radial-gradient(ellipse at 0 0, rgba(166,243,107,.08), transparent 45%), #111821; box-shadow: 0 30px 100px rgba(0,0,0,.68); }
     .quiz-dialog::backdrop { background: rgba(3,6,10,.78); backdrop-filter: blur(7px); }
@@ -820,9 +817,8 @@
   <aside class="contact-widget" id="contact-widget" aria-label="Быстрая связь">
     <div class="contact-panel" id="contact-panel" aria-labelledby="contact-panel-title" aria-hidden="true">
       <h2 id="contact-panel-title">Связаться с нами</h2>
-      <p>Выберите удобный мессенджер или задайте быстрый вопрос.</p>
-      <nav class="messenger-links" aria-label="Выбрать мессенджер"></nav>
-      <button class="quick-question" type="button">Быстрый вопрос</button>
+      <p>Выберите удобный способ связи.</p>
+      <nav class="messenger-links" aria-label="Выбрать способ связи"></nav>
     </div>
     <button class="contact-toggle" type="button" aria-label="Открыть способы связи" aria-expanded="false" aria-controls="contact-panel">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-5.5A7.5 7.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
@@ -922,10 +918,6 @@
         return;
       }
 
-      if (event.target.closest('.quick-question')) {
-        const goal = window.matchMedia('(max-width: 640px)').matches ? 'click_whatsapp' : 'click_telegram';
-        reachGoal(goal);
-      }
     });
 
     document.querySelectorAll('.faq-question').forEach((button) => {
@@ -1131,20 +1123,6 @@
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') setContactOpen(false);
     });
-    contactWidget.querySelector('.quick-question').addEventListener('click', (event) => {
-      const button = event.currentTarget;
-      const message = encodeURIComponent('Здравствуйте! У меня есть вопрос об исследовании B2B-рынка.');
-      const links = {
-        telegram: `${CONTACTS.telegram.href}?text=${message}`,
-        whatsapp: `${CONTACTS.whatsapp.href}?text=${message}`
-      };
-      const preferred = window.matchMedia('(max-width: 640px)').matches ? 'whatsapp' : 'telegram';
-      window.open(links[preferred], '_blank', 'noopener,noreferrer');
-      button.textContent = `Откроется ${CONTACTS[preferred].label}`;
-      button.disabled = true;
-      window.setTimeout(() => { button.textContent = 'Быстрый вопрос'; button.disabled = false; }, 1800);
-    });
-
     const privacyModal = document.getElementById('privacy-policy-modal');
     const privacyDialog = privacyModal.querySelector('.privacy-dialog');
     const closePrivacyModal = () => {
