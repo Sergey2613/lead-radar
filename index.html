@@ -295,7 +295,7 @@
     .quiz-step { animation: quiz-enter .28s ease both; }
     .quiz-step[hidden] { display: none; }
     @keyframes quiz-enter { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
-    .quiz-step h2, .quiz-thanks h2 { margin: 0 0 8px; padding-right: 38px; font-size: clamp(24px, 5vw, 31px); }
+    .quiz-step h2 { margin: 0 0 8px; padding-right: 38px; font-size: clamp(24px, 5vw, 31px); }
     .quiz-step-copy { margin: 0 0 23px; color: var(--muted); font-size: 13px; }
     .quiz-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .quiz-option { display: flex; min-height: 66px; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 15px; border: 1px solid rgba(194,209,231,.13); border-radius: 12px; color: #e5ebf3; background: rgba(255,255,255,.025); text-align: left; font-size: 13px; font-weight: 600; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
@@ -308,13 +308,6 @@
     .quiz-submit { width: 100%; min-height: 52px; margin-top: 5px; }
     .quiz-back { margin-top: 13px; padding: 8px 0; border: 0; color: #a7b3c3; background: none; font-size: 12px; cursor: pointer; }
     .quiz-error { min-height: 20px; margin: 9px 0 0; color: #ff9f91; font-size: 11px; }
-    .quiz-thanks { padding: 38px 0 18px; text-align: center; }
-    .quiz-thanks[hidden] { display: none; }
-    .quiz-check { display: grid; width: 54px; height: 54px; margin: 0 auto 18px; place-items: center; border: 1px solid rgba(166,243,107,.3); border-radius: 17px; color: var(--accent); background: rgba(166,243,107,.1); font-size: 25px; }
-    .quiz-thanks h2 { padding: 0; }
-    .quiz-thanks p { margin: 0; color: var(--muted); font-size: 13px; }
-    .quiz-messenger-actions { display: grid; gap: 10px; margin-top: 22px; }
-    .quiz-messenger-link { width: 100%; text-decoration: none; }
     @media (max-width: 480px) { .quiz-options { grid-template-columns: 1fr; } .quiz-option { min-height: 56px; } }
     .form-legal { margin: 12px 0 0; color: #8996a8; font-size: 10px; line-height: 1.55; text-align: center; }
     .form-legal a, .footer-privacy { color: #b9c5d4; text-decoration: underline; text-decoration-color: rgba(185,197,212,.35); text-underline-offset: 3px; }
@@ -379,7 +372,7 @@
       .site-header { min-height: 0; }
       .nav { min-height: 60px; justify-content: flex-start; gap: 18px; padding-top: 8px; padding-bottom: 8px; }
       .nav-links { flex: 1 1 auto; min-width: 0; justify-content: flex-start; flex-wrap: nowrap; gap: 0; overflow: visible; }
-      .nav-links > a[href="#faq"] { display: none; }
+      .nav-links > a[href="#faq"], .nav-links > a[href="#inside"], .nav-links > a[href="#cases"] { display: none; }
       .nav-links > a:not(.nav-cta) { min-height: 44px; padding-inline: 3px; font-size: 10px; white-space: nowrap; }
       .nav-cta { min-height: 44px; flex: 0 0 auto; margin-left: 2px; padding: 0 5px; font-size: 10px; }
       .brand { font-size: 14px; }
@@ -753,25 +746,15 @@
         <p class="quiz-step-copy">Оставьте рабочие контакты — подготовим релевантные компании и свяжемся в течение 15 минут.</p>
         <form id="quiz-form" novalidate>
           <div class="quiz-fields">
-            <label class="field"><span>Должность</span><input name="position" autocomplete="organization-title" placeholder="Например, собственник" required></label>
+            <label class="field"><span>Должность</span><input name="position" autocomplete="organization-title" placeholder="Например, собственник" aria-describedby="quiz-error" required></label>
             <label class="field"><span>Телефон или Telegram</span><input name="contact" autocomplete="tel" placeholder="+7 900 000-00-00 или @username" aria-describedby="quiz-error" required></label>
-            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="name@company.ru" required></label>
+            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="name@company.ru" aria-describedby="quiz-error" required></label>
           </div>
           <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных в соответствии с <a href="#privacy-policy-modal" data-privacy-modal>Политикой конфиденциальности</a>.</p>
           <button class="button quiz-submit" type="submit">Получить подборку <span aria-hidden="true">→</span></button>
           <p class="quiz-error" id="quiz-error" role="status" aria-live="polite"></p>
         </form>
         <button class="quiz-back" type="button" data-quiz-back>← Назад</button>
-      </section>
-      <section class="quiz-thanks" id="quiz-thanks" hidden>
-        <span class="quiz-check" aria-hidden="true">✓</span>
-        <h2 id="quiz-fallback-title">Не удалось отправить заявку автоматически</h2>
-        <p id="quiz-fallback-message">Данные сохранены в этом браузере. Отправьте заявку удобным способом — текст уже подготовлен.</p>
-        <div class="quiz-messenger-actions">
-          <a class="button quiz-messenger-link" id="quiz-telegram-link" href="https://t.me/Sergey_The_Mayerz" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
-          <a class="button quiz-messenger-link" id="quiz-whatsapp-link" href="https://wa.me/79682613233" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
-          <a class="button quiz-messenger-link" id="quiz-email-link" href="mailto:moro7z@yandex.ru">Отправить на почту</a>
-        </div>
       </section>
     </div>
   </dialog>
@@ -1005,25 +988,10 @@
       quizAnswers.industry = '';
       quizAnswers.employees = '';
       quizForm.reset();
-      document.getElementById('quiz-thanks').hidden = true;
       document.getElementById('quiz-error').textContent = '';
       quizDialog.showModal();
       document.body.style.overflow = 'hidden';
-      let restored = false;
-      try {
-        const pending = JSON.parse(localStorage.getItem('lead-radar-pending-submission') || 'null');
-        if (pending?.submission) {
-          quizAnswers.industry = pending.submission.industry || '';
-          quizAnswers.employees = pending.submission.employees || '';
-          quizForm.elements.position.value = pending.submission.name || '';
-          quizForm.elements.contact.value = pending.submission.contact || '';
-          quizForm.elements.email.value = pending.submission.email || '';
-          restored = true;
-        }
-      } catch (error) {
-        // Storage may be unavailable; the in-memory form still retains the current attempt.
-      }
-      showQuizStep(restored ? 3 : 1);
+      showQuizStep(1);
       reachGoal('quiz_start');
     };
     const closeQuiz = () => {
@@ -1057,30 +1025,41 @@
     };
     const contactInput = quizForm.elements.contact;
     const positionInput = quizForm.elements.position;
+    const emailInput = quizForm.elements.email;
+    const quizError = document.getElementById('quiz-error');
     contactInput.addEventListener('input', () => {
       contactInput.setCustomValidity('');
-      document.getElementById('quiz-error').textContent = '';
+      quizError.textContent = '';
     });
-    positionInput.addEventListener('input', () => positionInput.setCustomValidity(''));
+    positionInput.addEventListener('input', () => {
+      positionInput.setCustomValidity('');
+      quizError.textContent = '';
+    });
+    emailInput.addEventListener('input', () => { quizError.textContent = ''; });
     const quizSubmitButton = quizForm.querySelector('[type="submit"]');
-    const quizError = document.getElementById('quiz-error');
     let quizIsSending = false;
     quizForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (quizIsSending) return;
       contactInput.setCustomValidity('');
-      if (!quizForm.reportValidity()) return;
+      if (!quizForm.reportValidity()) {
+        quizError.textContent = 'Проверьте обязательные поля и формат email.';
+        return;
+      }
       const data = new FormData(quizForm);
       const contact = String(data.get('contact')).trim();
       if (!isValidPhoneOrTelegram(contact)) {
-        contactInput.setCustomValidity('Введите телефон с 7–15 цифрами или Telegram username длиной 5–32 символа.');
+        const contactMessage = 'Введите телефон с 7–15 цифрами или Telegram username длиной 5–32 символа.';
+        contactInput.setCustomValidity(contactMessage);
+        quizError.textContent = contactMessage;
         contactInput.reportValidity();
         return;
       }
       const position = String(data.get('position')).trim();
       if (!position) {
-        quizForm.elements.position.setCustomValidity('Укажите вашу должность.');
-        quizForm.elements.position.reportValidity();
+        positionInput.setCustomValidity('Укажите вашу должность.');
+        quizError.textContent = 'Укажите вашу должность.';
+        positionInput.reportValidity();
         return;
       }
       quizForm.elements.position.setCustomValidity('');
@@ -1117,36 +1096,18 @@
         if (!response.ok || result.success !== true && result.success !== 'true') {
           throw new Error(result.message || 'Сервис не подтвердил получение заявки.');
         }
-        try { localStorage.removeItem('lead-radar-pending-submission'); } catch (error) { /* Storage is optional after delivery. */ }
         reachGoal('quiz_complete');
         quizAnswers.industry = '';
         quizAnswers.employees = '';
         quizForm.reset();
         contactInput.setCustomValidity('');
         quizSteps.forEach((section) => { section.hidden = false; });
-        document.getElementById('quiz-thanks').hidden = true;
         document.getElementById('quiz-progress').hidden = false;
         showQuizStep(1);
         closeQuiz();
         showSuccessModal();
       } catch (error) {
-        let stored = false;
-        try {
-          localStorage.setItem('lead-radar-pending-submission', JSON.stringify({ savedAt: new Date().toISOString(), submission }));
-          stored = true;
-        } catch (storageError) {
-          // Keep the current inputs available even if browser storage is blocked or full.
-        }
-        const encodedMessage = encodeURIComponent(submission.message);
-        document.getElementById('quiz-telegram-link').href = `https://t.me/Sergey_The_Mayerz?text=${encodedMessage}`;
-        document.getElementById('quiz-whatsapp-link').href = `https://wa.me/79682613233?text=${encodedMessage}`;
-        document.getElementById('quiz-email-link').href = `mailto:moro7z@yandex.ru?subject=${encodeURIComponent(submission._subject)}&body=${encodedMessage}`;
-        document.getElementById('quiz-fallback-message').textContent = stored
-          ? 'Мы сохранили заявку в этом браузере. Отправьте её удобным способом — текст уже подготовлен.'
-          : 'Не удалось сохранить заявку после ошибки сети. Заполненные поля остались на экране; отправьте её удобным способом.';
-        quizError.textContent = 'Сетевая отправка не удалась. Используйте резервные способы связи ниже.';
-        document.getElementById('quiz-thanks').hidden = false;
-        document.getElementById('quiz-thanks').focus();
+        quizError.textContent = 'Не удалось отправить заявку. Проверьте подключение и попробуйте ещё раз.';
       } finally {
         quizIsSending = false;
         quizSubmitButton.disabled = false;
