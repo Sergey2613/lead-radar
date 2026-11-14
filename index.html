@@ -940,6 +940,9 @@
       requestAnimationFrame(() => {
         successModal.classList.add('is-open');
         successModalCard.focus();
+        if (typeof ym === 'function') {
+          ym(114213474, 'reachGoal', 'order_success');
+        }
       });
     };
     const closeSuccessModal = () => {
